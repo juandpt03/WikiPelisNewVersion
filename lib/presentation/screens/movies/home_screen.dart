@@ -35,6 +35,7 @@ class _HomeViewState extends ConsumerState<_HomeView> {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
     // Creando la variable para escuchar el Loading
     final initialLoading = ref.watch(initialLoadingProvider);
     //Condición para retornar pantalla de carga
@@ -49,10 +50,15 @@ class _HomeViewState extends ConsumerState<_HomeView> {
 
     return CustomScrollView(
       slivers: [
-        const SliverAppBar(
+        SliverAppBar(
+          expandedHeight: 70,
+          collapsedHeight: 70,
           floating: true,
           pinned: true,
-          flexibleSpace: CustomAppBar(),
+          flexibleSpace: Container(
+            color: colors.background,
+            child: const CustomAppBar(),
+          ),
         ),
         SliverList(
           delegate: SliverChildListDelegate(
