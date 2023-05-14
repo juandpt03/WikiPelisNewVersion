@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:wikipelis/config/helpers/human_formats.dart';
 import 'package:wikipelis/domain/entities/movie.dart';
 
@@ -109,7 +110,9 @@ class _Slider extends StatelessWidget {
                         ),
                       );
                     }
-                    return FadeIn(child: child);
+                    return GestureDetector(
+                        onTap: () => context.push('/movie/${movie.id}'),
+                        child: FadeIn(child: child));
                   },
                 ),
               ),
