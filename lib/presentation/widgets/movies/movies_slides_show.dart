@@ -10,9 +10,10 @@ class MovieSlidesShow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
+    final Size size = MediaQuery.of(context).size;
     return SizedBox(
       width: double.infinity,
-      height: 210,
+      height: size.height * 0.3,
       child: Swiper(
         pagination: SwiperPagination(
           margin: const EdgeInsets.only(top: 0),
