@@ -20,56 +20,44 @@ class CustomAppBar extends ConsumerWidget {
           vertical: 10,
           horizontal: 10,
         ),
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            border: Border.all(
-              color: colors.secondary,
+        child: Row(
+          children: [
+            FaIcon(
+              FontAwesomeIcons.film,
+              color: colors.primary,
             ),
-          ),
-          width: double.infinity,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Row(
-              children: [
-                FaIcon(
-                  FontAwesomeIcons.film,
+            const SizedBox(
+              width: 5,
+            ),
+            Text(
+              'WikiPelis',
+              style: style,
+            ),
+            const Spacer(),
+            IconButton(
+                padding: EdgeInsets.zero,
+                onPressed: () {
+                  final searchedMovies = ref.read(searchedMoviesProvider);
+                  final searchQuery = ref.read(searchQueryProvider);
+                  showSearch<Movie?>(
+                    query: searchQuery,
+                    context: context,
+                    delegate: SearchMovieDelegate(
+                        searchMovies: (String query) {
+                          return ref
+                              .read(searchedMoviesProvider.notifier)
+                              .searchMoviesByQuery(query);
+                        },
+                        initialMovies: searchedMovies),
+                  ).then((movie) {
+                    if (movie != null) context.push('/movie/${movie.id}');
+                  });
+                },
+                icon: FaIcon(
+                  FontAwesomeIcons.magnifyingGlass,
                   color: colors.primary,
-                ),
-                const SizedBox(
-                  width: 5,
-                ),
-                Text(
-                  'WIKIPELIS',
-                  style: style,
-                ),
-                const Spacer(),
-                IconButton(
-                  onPressed: () {
-                    final searchedMovies = ref.read(searchedMoviesProvider);
-                    final searchQuery = ref.read(searchQueryProvider);
-                    showSearch<Movie?>(
-                      query: searchQuery,
-                      context: context,
-                      delegate: SearchMovieDelegate(
-                          searchMovies: (String query) {
-                            return ref
-                                .read(searchedMoviesProvider.notifier)
-                                .searchMoviesByQuery(query);
-                          },
-                          initialMovies: searchedMovies),
-                    ).then((movie) {
-                      if (movie != null) context.push('/movie/${movie.id}');
-                    });
-                  },
-                  icon: FaIcon(
-                    FontAwesomeIcons.magnifyingGlass,
-                    color: colors.primary,
-                  ),
-                )
-              ],
-            ),
-          ),
+                ))
+          ],
         ),
       ),
     );

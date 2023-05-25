@@ -13,6 +13,7 @@ class CustomBottomNavigation extends StatelessWidget {
         .bodyMedium
         ?.copyWith(fontWeight: FontWeight.bold, color: colors.primary);
     return GNav(
+      
         //Ela gap es la separación entre texto e ícono
         gap: 10,
         duration: const Duration(milliseconds: 200),
