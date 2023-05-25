@@ -4,39 +4,10 @@ import 'package:go_router/go_router.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 class CustomBottomNavigation extends StatelessWidget {
-  const CustomBottomNavigation({super.key});
+  final int currentIndex;
+  const CustomBottomNavigation({super.key, required this.currentIndex});
   void onItemTapped(BuildContext context, int index) {
-    switch (index) {
-      case 0:
-        context.go('/');
-        break;
-      case 1:
-        context.go('/');
-        break;
-      case 2:
-        context.go('/favorites');
-        break;
-      case 3:
-        context.go('/');
-        break;
-    }
-  }
-
-  int getCurrentIndex(BuildContext context) {
-    final String currentLocation = GoRouterState.of(context).location;
-
-    switch (currentLocation) {
-      case '/':
-        return 0;
-      case '/categories':
-        return 1;
-      case '/favorites':
-        return 2;
-      case '/settings':
-        return 3;
-      default:
-        return 0;
-    }
+    context.go('/home/$index');
   }
 
   @override
@@ -47,8 +18,8 @@ class CustomBottomNavigation extends StatelessWidget {
         .bodyMedium
         ?.copyWith(fontWeight: FontWeight.bold, color: colors.primary);
     return GNav(
-        selectedIndex: getCurrentIndex(context),
-        onTabChange: (index) => onItemTapped(context, index),
+        selectedIndex: currentIndex,
+        onTabChange: (indexNavigation) => onItemTapped(context, indexNavigation),
 
         //Ela gap es la separación entre texto e ícono
         gap: 10,
