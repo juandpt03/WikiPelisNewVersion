@@ -43,7 +43,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
           expandedHeight: 70,
           collapsedHeight: 70,
           floating: true,
-          pinned: true,
+          // pinned: true,
           flexibleSpace: Container(
             color: colors.background,
             child: const CustomAppBar(),

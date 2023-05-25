@@ -1,9 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 class CustomBottomNavigation extends StatelessWidget {
   const CustomBottomNavigation({super.key});
+  void onItemTapped(BuildContext context, int index) {
+    switch (index) {
+      case 0:
+        context.go('/');
+        break;
+      case 1:
+        context.go('/');
+        break;
+      case 2:
+        context.go('/favorites');
+        break;
+      case 3:
+        context.go('/');
+        break;
+    }
+  }
+
+  int getCurrentIndex(BuildContext context) {
+    final String currentLocation = GoRouterState.of(context).location;
+
+    switch (currentLocation) {
+      case '/':
+        return 0;
+      case '/categories':
+        return 1;
+      case '/favorites':
+        return 2;
+      case '/settings':
+        return 3;
+      default:
+        return 0;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +47,9 @@ class CustomBottomNavigation extends StatelessWidget {
         .bodyMedium
         ?.copyWith(fontWeight: FontWeight.bold, color: colors.primary);
     return GNav(
-      
+        selectedIndex: getCurrentIndex(context),
+        onTabChange: (index) => onItemTapped(context, index),
+
         //Ela gap es la separación entre texto e ícono
         gap: 10,
         duration: const Duration(milliseconds: 200),
