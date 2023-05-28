@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:wikipelis/domain/entities/movie.dart';
 import 'package:wikipelis/presentation/providers/providers.dart';
 
@@ -67,7 +68,7 @@ class _MovieDetails extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
               padding: const EdgeInsets.all(10),
@@ -75,7 +76,7 @@ class _MovieDetails extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 child: Image.network(
                   movie.posterPath,
-                  height: size.width * 0.3,
+                  width: size.width * 0.3,
                 ),
               ),
             ),
@@ -83,7 +84,7 @@ class _MovieDetails extends StatelessWidget {
               width: 10,
             ),
             SizedBox(
-              width: (size.width) * 0.7,
+              width: (size.width) * 0.6,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -197,18 +198,43 @@ class _ActorsByMovie extends ConsumerWidget {
   }
 }
 
-class _CustomSliverAppBar extends StatelessWidget {
+class _CustomSliverAppBar extends ConsumerWidget {
   final Movie movie;
   const _CustomSliverAppBar({
     required this.movie,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
+    final isFavoriteFuture = ref.watch(isFavoriteProvider(movie.id));
+
     final colors = Theme.of(context).colorScheme;
     final Size size = MediaQuery.of(context).size;
     // final textStyle = Theme.of(context).textTheme;
     return SliverAppBar(
+      actions: [
+        IconButton(
+          onPressed: () async {
+            await ref
+                .read(favoriteMoviesProvider.notifier)
+                .toggleFavorite(movie);
+
+            await Future.delayed(const Duration(milliseconds: 100));
+            ref.invalidate(isFavoriteProvider(movie.id));
+          },
+          icon: isFavoriteFuture.when(
+            data: (isFavorite) => isFavorite
+                ? FaIcon(
+                    FontAwesomeIcons.solidHeart,
+                    color: colors.primary,
+                  )
+                : const FaIcon(FontAwesomeIcons.heart),
+            error: (error, stackTrace) =>
+                throw UnimplementedError(error.toString()),
+            loading: () => const CircularProgressIndicator(strokeWidth: 2),
+          ),
+        )
+      ],
       backgroundColor: colors.onBackground,
       expandedHeight: size.height * 0.65,
       foregroundColor: colors.onSecondary,
@@ -232,8 +258,27 @@ class _CustomSliverAppBar extends StatelessWidget {
                 ),
               ),
             ),
-            const _BackgroundImages(),
-            const _ForegroundBackground()
+            const CustomBackgroundGradient(
+              colors: [Colors.transparent, Colors.black54],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              stops: [0.7, 1.0],
+            ),
+            const CustomBackgroundGradient(
+              colors: [
+                Colors.black,
+                Colors.transparent,
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.topCenter,
+              stops: [0, 0.4],
+            ),
+            const CustomBackgroundGradient(
+              colors: [Colors.black54, Colors.transparent],
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+              stops: [0.0, 0.2],
+            ),
           ],
         ),
       ),
@@ -253,40 +298,31 @@ class _CustomSliverAppBar extends StatelessWidget {
   // }
 }
 
-class _ForegroundBackground extends StatelessWidget {
-  const _ForegroundBackground();
+class CustomBackgroundGradient extends StatelessWidget {
+  final List<Color> colors;
+  final AlignmentGeometry begin;
+  final AlignmentGeometry end;
+  final List<double> stops;
+
+  const CustomBackgroundGradient({
+    super.key,
+    required this.colors,
+    required this.begin,
+    required this.end,
+    required this.stops,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox.expand(
+    return SizedBox.expand(
       child: DecoratedBox(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-              colors: [
-                Colors.black54,
-                Colors.transparent,
-              ],
-              begin: Alignment.topLeft,
-              stops: [0, 0.4]),
-        ),
-      ),
-    );
-  }
-}
-
-class _BackgroundImages extends StatelessWidget {
-  const _BackgroundImages();
-
-  @override
-  Widget build(BuildContext context) {
-    return const SizedBox.expand(
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-              colors: [Colors.transparent, Colors.black87],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              stops: [0.7, 1.0]),
+            colors: colors,
+            begin: begin,
+            end: end,
+            stops: stops,
+          ),
         ),
       ),
     );

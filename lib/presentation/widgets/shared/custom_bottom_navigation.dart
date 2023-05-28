@@ -19,7 +19,8 @@ class CustomBottomNavigation extends StatelessWidget {
         ?.copyWith(fontWeight: FontWeight.bold, color: colors.primary);
     return GNav(
         selectedIndex: currentIndex,
-        onTabChange: (indexNavigation) => onItemTapped(context, indexNavigation),
+        onTabChange: (indexNavigation) =>
+            onItemTapped(context, indexNavigation),
 
         //Ela gap es la separación entre texto e ícono
         gap: 10,
@@ -42,19 +43,19 @@ class CustomBottomNavigation extends StatelessWidget {
         tabs: const [
           GButton(
             icon: FontAwesomeIcons.house,
-            text: 'Home',
+            text: 'Inicio',
           ),
           GButton(
             icon: FontAwesomeIcons.tags,
-            text: 'Categories',
+            text: 'Categorias',
           ),
           GButton(
             icon: FontAwesomeIcons.solidHeart,
-            text: 'Like',
+            text: 'Favoritos',
           ),
           GButton(
             icon: FontAwesomeIcons.wrench,
-            text: 'Settings',
+            text: 'Configuraciones',
           )
         ]);
 
