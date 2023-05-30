@@ -1,9 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:wikipelis/config/constants/environment.dart';
 import 'package:wikipelis/domain/datasources/movies_datasource.dart';
+import 'package:wikipelis/domain/entities/genre.dart';
 import 'package:wikipelis/domain/entities/movie.dart';
+import 'package:wikipelis/infrastructure/mappers/genre_mapper.dart';
 import 'package:wikipelis/infrastructure/mappers/movie_mapper.dart';
 import 'package:wikipelis/infrastructure/models/models.dart';
+import 'package:wikipelis/infrastructure/models/moviedb/genre_response.dart';
 
 class TheMoviedbDatasourceImpl extends MoviesDataSource {
   final dio = Dio(
@@ -78,5 +81,29 @@ class TheMoviedbDatasourceImpl extends MoviesDataSource {
       'query': query,
     });
     return _jsonToMovies(response.data);
+  }
+
+  @override
+  Future<List<Movie>> getMovieByGenre(
+      {required String genreId, int page = 1}) async {
+    final responseMovieByGenre = await dio.get(
+      '/discover/movie/',
+      queryParameters: {
+        'with_genres': genreId,
+        'page': page,
+      },
+    );
+    return _jsonToMovies(responseMovieByGenre.data);
+  }
+
+  @override
+  Future<List<Genre>> getMovieGenres() async {
+    final response = await dio.get('/genre/movie/list');
+
+    List<GenreModel> genreModel = GenreResponse.fromJson(response.data).genres;
+    List<Genre> genres = genreModel
+        .map((genreModel) => GenreMapper.genreResponseToEntity(genreModel))
+        .toList();
+    return genres;
   }
 }

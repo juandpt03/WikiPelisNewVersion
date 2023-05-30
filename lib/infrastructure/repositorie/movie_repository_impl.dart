@@ -1,4 +1,5 @@
 import 'package:wikipelis/domain/datasources/movies_datasource.dart';
+import 'package:wikipelis/domain/entities/genre.dart';
 import 'package:wikipelis/domain/entities/movie.dart';
 import 'package:wikipelis/domain/repositories/movies_repository.dart';
 
@@ -23,7 +24,7 @@ class MovieRepositoryImpl extends MoviesRepository {
 
   @override
   Future<List<Movie>> upComing({int page = 1}) {
-    return dataSource.upComing();
+    return dataSource.upComing(page: page);
   }
 
   @override
@@ -34,5 +35,15 @@ class MovieRepositoryImpl extends MoviesRepository {
   @override
   Future<List<Movie>> searchMovies(String query) {
     return dataSource.searchMovies(query);
+  }
+
+  @override
+  Future<List<Movie>> getMovieByGenre({required String genreId, int page = 1}) {
+    return dataSource.getMovieByGenre(genreId: genreId, page: page);
+  }
+
+  @override
+  Future<List<Genre>> getMovieGenres() {
+    return dataSource.getMovieGenres();
   }
 }

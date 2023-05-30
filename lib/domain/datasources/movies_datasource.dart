@@ -1,3 +1,4 @@
+import 'package:wikipelis/domain/entities/genre.dart';
 import 'package:wikipelis/domain/entities/movie.dart';
 
 abstract class MoviesDataSource {
@@ -7,4 +8,6 @@ abstract class MoviesDataSource {
   Future<List<Movie>> upComing({int page = 1});
   Future<Movie> getMovieById({required String id});
   Future<List<Movie>> searchMovies(String query);
+  Future<List<Movie>> getMovieByGenre({required String genreId, int page = 1});
+  Future<List<Genre>> getMovieGenres();
 }

@@ -10,12 +10,14 @@
 // String movieDetailsTheMoviedbToJson(MovieDetailsTheMoviedb data) =>
 //     json.encode(data.toJson());
 
+import 'package:wikipelis/infrastructure/models/moviedb/genre_response.dart';
+
 class MovieDetailsTheMoviedb {
   final bool adult;
   final String backdropPath;
   final dynamic belongsToCollection;
   final int budget;
-  final List<Genre> genres;
+  final List<GenreModel> genres;
   final String homepage;
   final int id;
   final String imdbId;
@@ -68,10 +70,11 @@ class MovieDetailsTheMoviedb {
   factory MovieDetailsTheMoviedb.fromJson(Map<String, dynamic> json) =>
       MovieDetailsTheMoviedb(
         adult: json["adult"],
-        backdropPath: json["backdrop_path"]??'',
+        backdropPath: json["backdrop_path"] ?? '',
         belongsToCollection: json["belongs_to_collection"],
         budget: json["budget"],
-        genres: List<Genre>.from(json["genres"].map((x) => Genre.fromJson(x))),
+        genres: List<GenreModel>.from(
+            json["genres"].map((x) => GenreModel.fromJson(x))),
         homepage: json["homepage"],
         id: json["id"],
         imdbId: json["imdb_id"],
@@ -79,7 +82,7 @@ class MovieDetailsTheMoviedb {
         originalTitle: json["original_title"],
         overview: json["overview"],
         popularity: json["popularity"]?.toDouble(),
-        posterPath: json["poster_path"]??'',
+        posterPath: json["poster_path"] ?? '',
         productionCompanies: List<ProductionCompany>.from(
             json["production_companies"]
                 .map((x) => ProductionCompany.fromJson(x))),
@@ -129,26 +132,6 @@ class MovieDetailsTheMoviedb {
         "video": video,
         "vote_average": voteAverage,
         "vote_count": voteCount,
-      };
-}
-
-class Genre {
-  final int id;
-  final String name;
-
-  Genre({
-    required this.id,
-    required this.name,
-  });
-
-  factory Genre.fromJson(Map<String, dynamic> json) => Genre(
-        id: json["id"],
-        name: json["name"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "name": name,
       };
 }
 
