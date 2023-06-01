@@ -11,19 +11,24 @@ final favoriteMoviesProvider =
 
 class StorageMoviesNotifier extends StateNotifier<Map<int, Movie>> {
   int page = 0;
+  bool isLoading = false;
+  final int limit = 12;
   final LocalStorageRepository localStorageRepository;
   StorageMoviesNotifier({required this.localStorageRepository}) : super({});
 
   Future<List<Movie>> loadNextPage() async {
-    final movies =
-        await localStorageRepository.loadMovies(offset: page * 10, limit: 12);
+    if (isLoading) return [];
+    isLoading = true;
+    final movies = await localStorageRepository.loadMovies(
+        offset: page * 10, limit: limit);
     page++;
     final Map<int, Movie> tempMovies = {};
     for (Movie movie in movies) {
       tempMovies[movie.id] = movie;
     }
     state = {...state, ...tempMovies};
-
+    await Future.delayed(const Duration(milliseconds: 200));
+    isLoading = false;
     return movies;
   }
 
@@ -38,12 +43,18 @@ class StorageMoviesNotifier extends StateNotifier<Map<int, Movie>> {
 // Si la película estaba en favoritos, se elimina del estado
     if (isMovieInFavorites) {
       state.remove(movie.id);
+      state = {...state};
     } else {
-      // Si la película no estaba en favoritos, se añade al estado.
-      state[movie.id] = movie;
+      // verificar si está cargando películas para que en ese momento se añdada la película y no antes
+      if (isLoading && state.length >= limit) {
+        state = {...state, movie.id: movie};
+      }
+      // verficar si  las películas en favoritos son menor al tamaño límite, en ese caso se agrega la película
+      if (state.length < limit) state = {...state, movie.id: movie};
+      //verifica si el tamaño es mayor a límite de pantalla, pero también se tiene en cuenta en caso de que no esté cargando películas
+      if (state.length > limit && !isLoading) {
+        state = {...state, movie.id: movie};
+      }
     }
-
-// Finalmente, se asinga un nuevo mapa al estado para forzar una actualización.
-    state = {...state};
   }
 }

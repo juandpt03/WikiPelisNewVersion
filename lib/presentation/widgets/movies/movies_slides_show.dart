@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:wikipelis/domain/entities/movie.dart';
 
 class MovieSlidesShow extends StatelessWidget {
@@ -39,18 +40,21 @@ class _Slide extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 30),
-      child: DecoratedBox(
-        decoration: decoration(),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(20),
-          child: Image.network(
-            movie.backdropPath,
-            fit: BoxFit.cover,
-            loadingBuilder: (context, child, loadingProgress) {
-              return _loadingMethod(loadingProgress, colors, child);
-            },
+    return GestureDetector(
+      onTap: () => context.push('/home/0/movie/${movie.id}'),
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 30),
+        child: DecoratedBox(
+          decoration: decoration(),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image.network(
+              movie.backdropPath,
+              fit: BoxFit.cover,
+              loadingBuilder: (context, child, loadingProgress) {
+                return _loadingMethod(loadingProgress, colors, child);
+              },
+            ),
           ),
         ),
       ),

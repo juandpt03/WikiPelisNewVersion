@@ -7,7 +7,7 @@ class HomeScreen extends StatelessWidget {
   final int pageIndex;
   final viewRoutes = const <Widget>[
     HomeView(),
-    SizedBox(),
+    CategoriesView(),
     FavoritesView(),
     SizedBox(),
   ];
