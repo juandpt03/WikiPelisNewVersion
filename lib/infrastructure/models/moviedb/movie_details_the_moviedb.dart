@@ -20,7 +20,7 @@ class MovieDetailsTheMoviedb {
   final List<GenreModel> genres;
   final String homepage;
   final int id;
-  final String imdbId;
+  final String? imdbId;
   final String originalLanguage;
   final String originalTitle;
   final String overview;
@@ -47,7 +47,7 @@ class MovieDetailsTheMoviedb {
     required this.genres,
     required this.homepage,
     required this.id,
-    required this.imdbId,
+    this.imdbId,
     required this.originalLanguage,
     required this.originalTitle,
     required this.overview,
@@ -77,7 +77,7 @@ class MovieDetailsTheMoviedb {
             json["genres"].map((x) => GenreModel.fromJson(x))),
         homepage: json["homepage"],
         id: json["id"],
-        imdbId: json["imdb_id"],
+        imdbId: json["imdb_id"] ?? '',
         originalLanguage: json["original_language"],
         originalTitle: json["original_title"],
         overview: json["overview"],

@@ -28,17 +28,17 @@ class CustomBottomNavigation extends StatelessWidget {
         color: colors.secondary,
         activeColor: colors.primary,
         textStyle: textStyle,
-        tabBorderRadius: 100,
+        // tabBorderRadius: 100,
         haptic: true,
         iconSize: 20,
         hoverColor: Colors.black12,
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-        tabActiveBorder: Border.all(width: 1, color: colors.onPrimaryContainer),
+        // tabActiveBorder: Border.all(width: 1, color: colors.onPrimaryContainer),
         tabMargin: const EdgeInsets.all(10),
-        tabBackgroundGradient: LinearGradient(colors: [
-          colors.secondary.withOpacity(0.1),
-          colors.primary.withOpacity(0.1),
-        ]),
+        // tabBackgroundGradient: LinearGradient(colors: [
+        //   colors.secondary.withOpacity(0.1),
+        //   colors.primary.withOpacity(0.1),
+        // ]),
         // tabBorder: Border.all(color: colors.secondary),
         tabs: const [
           GButton(
