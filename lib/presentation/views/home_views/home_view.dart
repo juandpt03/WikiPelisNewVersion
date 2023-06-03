@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 import 'package:wikipelis/presentation/providers/providers.dart';
 import 'package:wikipelis/presentation/widgets/widgets.dart';
 
@@ -24,6 +25,9 @@ class _HomeViewState extends ConsumerState<HomeView> {
 
   @override
   Widget build(BuildContext context) {
+    var now = DateTime.now();
+    var formatter = DateFormat('EEEE', 'es_ES');
+    String dia = formatter.format(now);
     final colors = Theme.of(context).colorScheme;
     // Creando la variable para escuchar el Loading
     final initialLoading = ref.watch(initialLoadingProvider);
@@ -59,7 +63,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
                     MovieHorizontalListView(
                       movies: nowPlayingMovies,
                       title: 'En Cines',
-                      subtitle: 'Lunes',
+                      subtitle: dia[0].toUpperCase() + dia.substring(1),
                       loadNextPage: () => ref
                           .read(nowPlayingMoviesProvider.notifier)
                           .loadNextPage(),
