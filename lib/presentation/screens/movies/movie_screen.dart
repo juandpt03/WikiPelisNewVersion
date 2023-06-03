@@ -2,6 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:wikipelis/domain/entities/movie.dart';
 import 'package:wikipelis/presentation/providers/providers.dart';
 
@@ -53,7 +54,7 @@ class MovieScreenState extends ConsumerState<MovieScreen> {
   }
 }
 
-class _MovieDetails extends StatelessWidget {
+class _MovieDetails extends ConsumerWidget {
   const _MovieDetails({
     required this.movie,
   });
@@ -61,7 +62,9 @@ class _MovieDetails extends StatelessWidget {
   final Movie movie;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
+    final genres = ref.watch(moviesGenresProvider);
+    final colors = Theme.of(context).colorScheme;
     final Size size = MediaQuery.of(context).size;
     final textStyle = Theme.of(context).textTheme;
     return Column(
@@ -92,13 +95,15 @@ class _MovieDetails extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 10),
                     child: Text(
                       movie.title,
-                      style: textStyle.titleLarge,
+                      style: textStyle.titleLarge!
+                          .copyWith(color: colors.onBackground),
                     ),
                   ),
                   Text(
                     movie.overview,
                     textAlign: TextAlign.justify,
-                    style: textStyle.bodyLarge,
+                    style: textStyle.bodyLarge!
+                        .copyWith(color: colors.onBackground),
                   ),
                 ],
               ),
@@ -110,12 +115,24 @@ class _MovieDetails extends StatelessWidget {
           children: [
             ...movie.genreIds
                 .map(
-                  (generos) => Container(
+                  (genero) => Container(
                     margin:
                         const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                    child: Chip(
-                      label: Text(generos),
-                      shape: const StadiumBorder(),
+                    child: GestureDetector(
+                      onTap: () {
+                        final String genreId = genres
+                            .firstWhere((genre) => genre.name == genero)
+                            .id;
+
+                        context.push('/home/1/categories/$genreId');
+                      },
+                      child: Chip(
+                        label: Text(
+                          genero,
+                          style: TextStyle(color: colors.onBackground),
+                        ),
+                        shape: const StadiumBorder(),
+                      ),
                     ),
                   ),
                 )
@@ -135,6 +152,7 @@ class _ActorsByMovie extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
+    final colors = Theme.of(context).colorScheme;
     final actors = ref.watch(actorInfoProvider)[movieId];
     if (actors == null) {
       return const Center(
@@ -181,11 +199,13 @@ class _ActorsByMovie extends ConsumerWidget {
                   actor.name,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
+                  style: TextStyle(color: colors.onBackground),
                 ),
                 Text(
                   actor.character ?? '',
                   overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
+                  style: TextStyle(
+                    color: colors.onBackground,
                     fontWeight: FontWeight.bold,
                   ),
                 )
@@ -224,9 +244,9 @@ class _CustomSliverAppBar extends ConsumerWidget {
           },
           icon: isFavoriteFuture.when(
             data: (isFavorite) => isFavorite
-                ? FaIcon(
+                ? const FaIcon(
                     FontAwesomeIcons.solidHeart,
-                    color: colors.primary,
+                    color: Colors.red,
                   )
                 : const FaIcon(FontAwesomeIcons.heart),
             error: (error, stackTrace) =>
@@ -258,27 +278,6 @@ class _CustomSliverAppBar extends ConsumerWidget {
                 ),
               ),
             ),
-            const CustomBackgroundGradient(
-              colors: [Colors.transparent, Colors.black54],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              stops: [0.7, 1.0],
-            ),
-            const CustomBackgroundGradient(
-              colors: [
-                Colors.black,
-                Colors.transparent,
-              ],
-              begin: Alignment.topLeft,
-              end: Alignment.topCenter,
-              stops: [0, 0.4],
-            ),
-            const CustomBackgroundGradient(
-              colors: [Colors.black54, Colors.transparent],
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-              stops: [0.0, 0.2],
-            ),
           ],
         ),
       ),
@@ -296,35 +295,4 @@ class _CustomSliverAppBar extends ConsumerWidget {
   //     maxLines: 1,
   //   );
   // }
-}
-
-class CustomBackgroundGradient extends StatelessWidget {
-  final List<Color> colors;
-  final AlignmentGeometry begin;
-  final AlignmentGeometry end;
-  final List<double> stops;
-
-  const CustomBackgroundGradient({
-    super.key,
-    required this.colors,
-    required this.begin,
-    required this.end,
-    required this.stops,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox.expand(
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: colors,
-            begin: begin,
-            end: end,
-            stops: stops,
-          ),
-        ),
-      ),
-    );
-  }
 }
