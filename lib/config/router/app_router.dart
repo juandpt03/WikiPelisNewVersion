@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:wikipelis/presentation/screens/screens.dart';
+import 'package:wikipelis/presentation/widgets/movies/movie_category_masonry.dart';
 
 final appRouter = GoRouter(
   initialLocation: '/home/0',
@@ -23,6 +24,15 @@ final appRouter = GoRouter(
             return MovieScreen(
               movieId: movieId,
             );
+          },
+        ),
+        GoRoute(
+          path: 'categories/:category',
+          name: MovieCategoryMasonry.route,
+          builder: (context, state) {
+            final categoryId = state.pathParameters['category'] ?? '';
+
+            return MovieCategoryMasonry(genreId: categoryId);
           },
         ),
       ],

@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wikipelis/presentation/providers/providers.dart';
-import 'package:wikipelis/presentation/widgets/movies/movie_masonry.dart';
+import 'package:wikipelis/presentation/widgets/movies/movie_favorites_masonry.dart';
 
 class FavoritesView extends ConsumerStatefulWidget {
   const FavoritesView({super.key});
@@ -69,7 +69,7 @@ class FavoritesViewState extends ConsumerState<FavoritesView> {
     }
 
     return Scaffold(
-      body: MovieMasonry(
+      body: MovieFavoritesMasonry(
         movies: movies,
         loadNextPage: loadNextPage,
       ),

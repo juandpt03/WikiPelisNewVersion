@@ -81,6 +81,7 @@ class _Slider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
     final textStyle = Theme.of(context).textTheme;
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 8),
@@ -129,8 +130,10 @@ class _Slider extends StatelessWidget {
             child: Text(
               movie.title,
               maxLines: 1,
-              style: textStyle.titleSmall
-                  ?.copyWith(overflow: TextOverflow.ellipsis),
+              style: textStyle.titleSmall?.copyWith(
+                overflow: TextOverflow.ellipsis,
+                color: colors.onBackground,
+              ),
             ),
           ),
 
@@ -185,7 +188,7 @@ class _Title extends StatelessWidget {
           if (title != null)
             Text(
               title!,
-              style: titleStyle,
+              style: titleStyle!.copyWith(color: colors.onBackground),
             ),
           const Spacer(),
           if (subtitle != null)

@@ -31,7 +31,7 @@ class CustomAppBar extends ConsumerWidget {
             ),
             Text(
               'WikiPelis',
-              style: style,
+              style: style!.copyWith(color: colors.onBackground, fontSize: 20),
             ),
             const Spacer(),
             IconButton(
