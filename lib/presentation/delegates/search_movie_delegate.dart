@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:wikipelis/config/helpers/human_formats.dart';
 import 'package:wikipelis/domain/entities/movie.dart';
+import 'package:wikipelis/generated/l10n.dart';
 
 typedef SearchMoviesCallback = Future<List<Movie>> Function(String query);
 
 class SearchMovieDelegate extends SearchDelegate<Movie?> {
   List<Movie> initialMovies;
   final SearchMoviesCallback searchMovies;
+  final BuildContext context;
   void clearStreams() {
     debouncedMovies.close();
   }
@@ -53,9 +55,11 @@ class SearchMovieDelegate extends SearchDelegate<Movie?> {
   }
 
   SearchMovieDelegate(
-      {required this.initialMovies, required this.searchMovies});
+      {required this.initialMovies,
+      required this.searchMovies,
+      required this.context});
   @override
-  String get searchFieldLabel => 'Buscar Película';
+  String get searchFieldLabel => S.of(context).buscarPelicula;
   @override
   List<Widget>? buildActions(BuildContext context) {
     return [
