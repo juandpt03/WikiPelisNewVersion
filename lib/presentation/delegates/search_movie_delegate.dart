@@ -57,7 +57,10 @@ class SearchMovieDelegate extends SearchDelegate<Movie?> {
   SearchMovieDelegate(
       {required this.initialMovies,
       required this.searchMovies,
-      required this.context});
+      required this.context})
+      : super(
+            searchFieldStyle:
+                TextStyle(color: Theme.of(context).colorScheme.onBackground));
   @override
   String get searchFieldLabel => S.of(context).buscarPelicula;
   @override
@@ -128,6 +131,7 @@ class _MovieItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final textStyle = Theme.of(context).textTheme;
     final Size size = MediaQuery.of(context).size;
+    final colors = Theme.of(context).colorScheme;
     return GestureDetector(
       onTap: () {
         onMovieSelected(context, movie);
@@ -161,14 +165,20 @@ class _MovieItem extends StatelessWidget {
                 children: [
                   Text(
                     movie.title,
-                    style: textStyle.titleMedium,
+                    style: textStyle.titleMedium!
+                        .copyWith(color: colors.onBackground),
                   ),
                   (movie.overview.length > 100)
                       ? Text(
                           '${movie.overview.substring(0, 100)}...',
-                          style: textStyle.bodyMedium,
+                          style: textStyle.bodyMedium!
+                              .copyWith(color: colors.onBackground),
                         )
-                      : Text(movie.overview),
+                      : Text(
+                          movie.overview,
+                          style: textStyle.bodyMedium!
+                              .copyWith(color: colors.onBackground),
+                        ),
                   Row(
                     children: [
                       Icon(
