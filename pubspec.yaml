@@ -96,4 +96,4 @@ flutter:
 flutter_intl:
   enabled: true
   class_name: S
-  main_locale: es
+  main_locale: en

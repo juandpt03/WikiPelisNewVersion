@@ -50,111 +50,211 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `En Cines`
+  /// `At the cinema`
   String get enCines {
     return Intl.message(
-      'En Cines',
+      'At the cinema',
       name: 'enCines',
       desc: '',
       args: [],
     );
   }
 
-  /// `Próximamente`
+  /// `Upcoming`
   String get proximamente {
     return Intl.message(
-      'Próximamente',
+      'Upcoming',
       name: 'proximamente',
       desc: '',
       args: [],
     );
   }
 
-  /// `En este mes`
+  /// `In this month`
   String get enEsteMes {
     return Intl.message(
-      'En este mes',
+      'In this month',
       name: 'enEsteMes',
       desc: '',
       args: [],
     );
   }
 
-  /// `Populares`
+  /// `Popular`
   String get populares {
     return Intl.message(
-      'Populares',
+      'Popular',
       name: 'populares',
       desc: '',
       args: [],
     );
   }
 
-  /// `Mejores Calificadas`
+  /// `Top Rated`
   String get mejoresCalificadas {
     return Intl.message(
-      'Mejores Calificadas',
+      'Top Rated',
       name: 'mejoresCalificadas',
       desc: '',
       args: [],
     );
   }
 
-  /// `Desde Siempre`
+  /// `All the time`
   String get desdeSiempre {
     return Intl.message(
-      'Desde Siempre',
+      'All the time',
       name: 'desdeSiempre',
       desc: '',
       args: [],
     );
   }
 
-  /// `Buscar Película`
+  /// `Search for a movie`
   String get buscarPelicula {
     return Intl.message(
-      'Buscar Película',
+      'Search for a movie',
       name: 'buscarPelicula',
       desc: '',
       args: [],
     );
   }
 
-  /// `Inicio`
+  /// `Home`
   String get inicio {
     return Intl.message(
-      'Inicio',
+      'Home',
       name: 'inicio',
       desc: '',
       args: [],
     );
   }
 
-  /// `Categorías`
+  /// `Categories`
   String get categorias {
     return Intl.message(
-      'Categorías',
+      'Categories',
       name: 'categorias',
       desc: '',
       args: [],
     );
   }
 
-  /// `Favoritos`
+  /// `Favorites`
   String get favoritos {
     return Intl.message(
-      'Favoritos',
+      'Favorites',
       name: 'favoritos',
       desc: '',
       args: [],
     );
   }
 
-  /// `Configuraciones`
+  /// `Settings`
   String get configuraciones {
     return Intl.message(
-      'Configuraciones',
+      'Settings',
       name: 'configuraciones',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Loading Movies`
+  String get cargandoPeliculas {
+    return Intl.message(
+      'Loading Movies',
+      name: 'cargandoPeliculas',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Buying Popcorn`
+  String get comprandoPalomitas {
+    return Intl.message(
+      'Buying Popcorn',
+      name: 'comprandoPalomitas',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Loading popular ones`
+  String get cargandoPopulares {
+    return Intl.message(
+      'Loading popular ones',
+      name: 'cargandoPopulares',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Calling my girlfriend`
+  String get llamandoAMiNovia {
+    return Intl.message(
+      'Calling my girlfriend',
+      name: 'llamandoAMiNovia',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please check your internet connection`
+  String get revisaTuConexionAInternet {
+    return Intl.message(
+      'Please check your internet connection',
+      name: 'revisaTuConexionAInternet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `How strange`
+  String get estoSePusoExtrano {
+    return Intl.message(
+      'How strange',
+      name: 'estoSePusoExtrano',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Yamerooo!`
+  String get yaMeroooo {
+    return Intl.message(
+      'Yamerooo!',
+      name: 'yaMeroooo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This is taking longer than expected.`
+  String get estoEstTardandoMsDeLoEsperado {
+    return Intl.message(
+      'This is taking longer than expected.',
+      name: 'estoEstTardandoMsDeLoEsperado',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please wait.`
+  String get esperePorFavor {
+    return Intl.message(
+      'Please wait.',
+      name: 'esperePorFavor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Loading...`
+  String get cargando {
+    return Intl.message(
+      'Loading...',
+      name: 'cargando',
       desc: '',
       args: [],
     );

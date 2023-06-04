@@ -9,5 +9,15 @@
   "inicio": "Inicio",
   "categorias": "Categorías",
   "favoritos": "Favoritos",
-  "configuraciones": "Configuraciones"
+  "configuraciones": "Configuraciones",
+  "cargandoPeliculas": "Cargando Películas",
+  "comprandoPalomitas": "Comprando Palomitas",
+  "cargandoPopulares": "Cargando populares",
+  "llamandoAMiNovia": "Llamando a mi novia",
+  "revisaTuConexionAInternet": "Revisa tu conexión a internet",
+  "estoSePusoExtrano": "Esto se puso extraño",
+  "yaMeroooo": "Ya meroooo",
+  "estoEstTardandoMsDeLoEsperado": "Esto está tardando más de lo esperado",
+  "esperePorFavor": "Espere por favor",
+  "cargando": "Cargando..."
 }

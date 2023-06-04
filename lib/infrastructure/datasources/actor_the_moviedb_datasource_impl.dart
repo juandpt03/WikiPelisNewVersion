@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:wikipelis/config/app_language/app_language.dart';
 import 'package:wikipelis/config/constants/environment.dart';
 import 'package:wikipelis/domain/datasources/actors_datasource.dart';
 import 'package:wikipelis/domain/entities/actor.dart';
@@ -10,7 +11,7 @@ class ActorMovieDatasource extends ActorsDataSource {
     baseUrl: 'https://api.themoviedb.org/3',
     queryParameters: {
       'api_key': Enviroment.theMovieDbKey,
-      'language': 'es-CO',
+      'language': AppLanguage.getLocale().toString().replaceAll('_', '-'),
     },
   ));
   @override

@@ -24,15 +24,32 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "buscarPelicula":
             MessageLookupByLibrary.simpleMessage("Search for a movie"),
+        "cargando": MessageLookupByLibrary.simpleMessage("Loading..."),
+        "cargandoPeliculas":
+            MessageLookupByLibrary.simpleMessage("Loading Movies"),
+        "cargandoPopulares":
+            MessageLookupByLibrary.simpleMessage("Loading popular ones"),
         "categorias": MessageLookupByLibrary.simpleMessage("Categories"),
+        "comprandoPalomitas":
+            MessageLookupByLibrary.simpleMessage("Buying Popcorn"),
         "configuraciones": MessageLookupByLibrary.simpleMessage("Settings"),
         "desdeSiempre": MessageLookupByLibrary.simpleMessage("All the time"),
         "enCines": MessageLookupByLibrary.simpleMessage("At the cinema"),
         "enEsteMes": MessageLookupByLibrary.simpleMessage("In this month"),
+        "esperePorFavor": MessageLookupByLibrary.simpleMessage("Please wait."),
+        "estoEstTardandoMsDeLoEsperado": MessageLookupByLibrary.simpleMessage(
+            "This is taking longer than expected."),
+        "estoSePusoExtrano":
+            MessageLookupByLibrary.simpleMessage("How strange"),
         "favoritos": MessageLookupByLibrary.simpleMessage("Favorites"),
         "inicio": MessageLookupByLibrary.simpleMessage("Home"),
+        "llamandoAMiNovia":
+            MessageLookupByLibrary.simpleMessage("Calling my girlfriend"),
         "mejoresCalificadas": MessageLookupByLibrary.simpleMessage("Top Rated"),
         "populares": MessageLookupByLibrary.simpleMessage("Popular"),
-        "proximamente": MessageLookupByLibrary.simpleMessage("Upcoming")
+        "proximamente": MessageLookupByLibrary.simpleMessage("Upcoming"),
+        "revisaTuConexionAInternet": MessageLookupByLibrary.simpleMessage(
+            "Please check your internet connection"),
+        "yaMeroooo": MessageLookupByLibrary.simpleMessage("Yamerooo!")
       };
 }

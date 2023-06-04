@@ -24,17 +24,35 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "buscarPelicula":
             MessageLookupByLibrary.simpleMessage("Buscar Película"),
+        "cargando": MessageLookupByLibrary.simpleMessage("Cargando..."),
+        "cargandoPeliculas":
+            MessageLookupByLibrary.simpleMessage("Cargando Películas"),
+        "cargandoPopulares":
+            MessageLookupByLibrary.simpleMessage("Cargando populares"),
         "categorias": MessageLookupByLibrary.simpleMessage("Categorías"),
+        "comprandoPalomitas":
+            MessageLookupByLibrary.simpleMessage("Comprando Palomitas"),
         "configuraciones":
             MessageLookupByLibrary.simpleMessage("Configuraciones"),
         "desdeSiempre": MessageLookupByLibrary.simpleMessage("Desde Siempre"),
         "enCines": MessageLookupByLibrary.simpleMessage("En Cines"),
         "enEsteMes": MessageLookupByLibrary.simpleMessage("En este mes"),
+        "esperePorFavor":
+            MessageLookupByLibrary.simpleMessage("Espere por favor"),
+        "estoEstTardandoMsDeLoEsperado": MessageLookupByLibrary.simpleMessage(
+            "Esto está tardando más de lo esperado"),
+        "estoSePusoExtrano":
+            MessageLookupByLibrary.simpleMessage("Esto se puso extraño"),
         "favoritos": MessageLookupByLibrary.simpleMessage("Favoritos"),
         "inicio": MessageLookupByLibrary.simpleMessage("Inicio"),
+        "llamandoAMiNovia":
+            MessageLookupByLibrary.simpleMessage("Llamando a mi novia"),
         "mejoresCalificadas":
             MessageLookupByLibrary.simpleMessage("Mejores Calificadas"),
         "populares": MessageLookupByLibrary.simpleMessage("Populares"),
-        "proximamente": MessageLookupByLibrary.simpleMessage("Próximamente")
+        "proximamente": MessageLookupByLibrary.simpleMessage("Próximamente"),
+        "revisaTuConexionAInternet": MessageLookupByLibrary.simpleMessage(
+            "Revisa tu conexión a internet"),
+        "yaMeroooo": MessageLookupByLibrary.simpleMessage("Ya meroooo")
       };
 }

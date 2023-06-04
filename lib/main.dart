@@ -9,6 +9,7 @@ import 'generated/l10n.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: '.env');
+  WidgetsFlutterBinding.ensureInitialized();
 
   runApp(
     const ProviderScope(
@@ -23,7 +24,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      locale: const Locale('es', ''),
       localizationsDelegates: const [
         AppLocalizationDelegate(),
         GlobalMaterialLocalizations.delegate,
