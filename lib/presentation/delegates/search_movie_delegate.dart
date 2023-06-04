@@ -59,8 +59,10 @@ class SearchMovieDelegate extends SearchDelegate<Movie?> {
       required this.searchMovies,
       required this.context})
       : super(
-            searchFieldStyle:
-                TextStyle(color: Theme.of(context).colorScheme.onBackground));
+          searchFieldStyle:
+              TextStyle(color: Theme.of(context).colorScheme.onBackground),
+        );
+
   @override
   String get searchFieldLabel => S.of(context).buscarPelicula;
   @override

@@ -6,6 +6,8 @@ class FullScreenLoader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+
     Stream<String> getLoadingMessage() {
       List<String> messages = [
         S.of(context).cargandoPeliculas,
@@ -26,7 +28,10 @@ class FullScreenLoader extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(S.of(context).esperePorFavor),
+          Text(
+            S.of(context).esperePorFavor,
+            style: TextStyle(color: colors.onBackground),
+          ),
           const SizedBox(
             height: 10,
           ),
@@ -39,8 +44,14 @@ class FullScreenLoader extends StatelessWidget {
           StreamBuilder(
             stream: getLoadingMessage(),
             builder: (context, AsyncSnapshot<String> snapshot) {
-              if (!snapshot.hasData) return Text(S.of(context).cargando);
-              return Text(snapshot.data!);
+              if (!snapshot.hasData) {
+                return Text(
+                  S.of(context).cargando,
+                  style: TextStyle(color: colors.onBackground),
+                );
+              }
+              return Text(snapshot.data!,
+                  style: TextStyle(color: colors.onBackground));
             },
           )
         ],
