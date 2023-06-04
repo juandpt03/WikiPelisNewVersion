@@ -113,7 +113,8 @@ class _MovieFavoritesMasonryState extends State<MovieFavoritesMasonry> {
                               const Spacer(),
                               Text(
                                 HumanFormats.number(movie.popularity),
-                                style: textStyle.bodySmall,
+                                style: textStyle.bodySmall!
+                                    .copyWith(color: colors.onBackground),
                               )
                             ],
                           ),

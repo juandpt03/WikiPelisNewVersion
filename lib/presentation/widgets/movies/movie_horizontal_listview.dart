@@ -161,7 +161,8 @@ class _Slider extends StatelessWidget {
                 const Spacer(),
                 Text(
                   HumanFormats.number(movie.popularity),
-                  style: textStyle.bodySmall,
+                  style:
+                      textStyle.bodySmall!.copyWith(color: colors.onBackground),
                 )
               ],
             ),

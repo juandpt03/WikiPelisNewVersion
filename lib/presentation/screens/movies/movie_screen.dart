@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
+import 'package:wikipelis/config/helpers/human_formats.dart';
 import 'package:wikipelis/domain/entities/movie.dart';
 import 'package:wikipelis/presentation/providers/providers.dart';
+import 'package:wikipelis/presentation/widgets/movies/movie_poster_link.dart';
 
 class MovieScreen extends ConsumerStatefulWidget {
   final String movieId;
@@ -73,15 +75,8 @@ class _MovieDetails extends ConsumerWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image.network(
-                  movie.posterPath,
-                  width: size.width * 0.3,
-                ),
-              ),
+            _MoviePoster(
+              movie: movie,
             ),
             const SizedBox(
               width: 10,
@@ -141,6 +136,57 @@ class _MovieDetails extends ConsumerWidget {
         ),
         _ActorsByMovie(movieId: movie.id.toString())
       ],
+    );
+  }
+}
+
+class _MoviePoster extends StatelessWidget {
+  const _MoviePoster({
+    required this.movie,
+  });
+
+  final Movie movie;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+    final Size size = MediaQuery.of(context).size;
+    final textStyle = Theme.of(context).textTheme;
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: Column(
+        children: [
+          SizedBox(
+            width: size.width * 0.3,
+            child: IgnorePointer(child: MoviePosterLink(movie: movie)),
+          ),
+          SizedBox(
+            width: size.width * 0.3,
+            child: Row(
+              children: [
+                FaIcon(
+                  FontAwesomeIcons.starHalfStroke,
+                  color: Colors.yellow.shade900,
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                Text(
+                  '${movie.voteAverage}',
+                  style: textStyle.bodyMedium
+                      ?.copyWith(color: Colors.yellow.shade900),
+                ),
+                const Spacer(),
+                Text(
+                  HumanFormats.number(movie.popularity),
+                  style:
+                      textStyle.bodySmall!.copyWith(color: colors.onBackground),
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
