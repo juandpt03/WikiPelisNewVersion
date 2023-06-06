@@ -106,26 +106,23 @@ class _MovieGenres extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
     return Wrap(
-      alignment: WrapAlignment.start,
+      spacing: 20,
       children: [
         ...movie.genreIds
             .map(
-              (genero) => Container(
-                margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                child: GestureDetector(
-                  onTap: () {
-                    final String genreId =
-                        genres.firstWhere((genre) => genre.name == genero).id;
+              (genero) => GestureDetector(
+                onTap: () {
+                  final String genreId =
+                      genres.firstWhere((genre) => genre.name == genero).id;
 
-                    context.push('/home/1/categories/$genreId');
-                  },
-                  child: Chip(
-                    label: Text(
-                      genero,
-                      style: TextStyle(color: colors.onBackground),
-                    ),
-                    shape: const StadiumBorder(),
+                  context.push('/home/1/categories/$genreId');
+                },
+                child: Chip(
+                  label: Text(
+                    genero,
+                    style: TextStyle(color: colors.onBackground),
                   ),
+                  shape: const StadiumBorder(),
                 ),
               ),
             )
