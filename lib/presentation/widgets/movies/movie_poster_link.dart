@@ -7,8 +7,9 @@ import 'package:wikipelis/domain/entities/movie.dart';
 
 class MoviePosterLink extends StatelessWidget {
   final Movie movie;
+  final double height;
 
-  const MoviePosterLink({super.key, required this.movie});
+  const MoviePosterLink({super.key, required this.movie, required this.height});
 
   @override
   Widget build(BuildContext context) {
@@ -19,19 +20,20 @@ class MoviePosterLink extends StatelessWidget {
         context.push('/home/0/movie/${movie.id}');
       },
       child: SizedBox(
-        height: 250,
+        height: height,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: Image.network(
+                height: height * 0.65,
                 movie.posterPath,
                 loadingBuilder: (context, child, loadingProgress) {
                   if (loadingProgress != null) {
                     return Container(
-                      height: 175,
+                      height: height * 0.65,
                       decoration: _loadingImage(),
                       child: const Center(
                           child: CircularProgressIndicator(strokeWidth: 1)),
@@ -41,6 +43,11 @@ class MoviePosterLink extends StatelessWidget {
                 },
               ),
             ),
+            const SizedBox(
+              height: 5,
+            ),
+
+            //Rating
 
             //title
             Text(
@@ -49,8 +56,6 @@ class MoviePosterLink extends StatelessWidget {
               style: textStyle.titleSmall!.copyWith(
                   color: colors.onBackground, overflow: TextOverflow.ellipsis),
             ),
-
-            //Rating
 
             Row(
               children: [

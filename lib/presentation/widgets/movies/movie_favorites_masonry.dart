@@ -55,33 +55,28 @@ class _MovieFavoritesMasonryState extends State<MovieFavoritesMasonry> {
         itemBuilder: (context, index) {
           final movie = widget.movies[index];
           if (index == 1) {
-            return Column(
-              children: [
-                const SizedBox(
-                  height: 40,
-                ),
-                _MovieFavorite(movie: movie)
-              ],
+            return FadeInUpBig(
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  MoviePosterLink(
+                    movie: movie,
+                    height: 250,
+                  ),
+                ],
+              ),
             );
           }
-          return _MovieFavorite(movie: movie);
+          return FadeInUpBig(
+            child: MoviePosterLink(
+              movie: movie,
+              height: 250,
+            ),
+          );
         },
       ),
-    );
-  }
-}
-
-class _MovieFavorite extends StatelessWidget {
-  const _MovieFavorite({
-    required this.movie,
-  });
-
-  final Movie movie;
-
-  @override
-  Widget build(BuildContext context) {
-    return FadeInUp(
-      child: MoviePosterLink(movie: movie),
     );
   }
 }

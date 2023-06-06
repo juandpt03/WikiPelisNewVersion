@@ -184,7 +184,11 @@ class _MoviePoster extends StatelessWidget {
         children: [
           SizedBox(
             width: size.width * 0.3,
-            child: IgnorePointer(child: MoviePosterLink(movie: movie)),
+            child: IgnorePointer(
+                child: MoviePosterLink(
+              movie: movie,
+              height: 250,
+            )),
           ),
         ],
       ),

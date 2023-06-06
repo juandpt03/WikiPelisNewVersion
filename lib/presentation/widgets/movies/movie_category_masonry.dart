@@ -66,7 +66,7 @@ class _MovieCategoryMasonryState extends ConsumerState<MovieCategoryMasonry> {
           itemBuilder: (context, index) {
             final movie = movies[index];
             return FadeInUp(
-              child: MoviePosterLink(movie: movie),
+              child: MoviePosterLink(movie: movie, height: 250),
             );
           },
         ),
