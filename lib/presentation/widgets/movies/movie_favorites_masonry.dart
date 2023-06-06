@@ -5,8 +5,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:wikipelis/domain/entities/movie.dart';
 import 'package:wikipelis/presentation/widgets/movies/movie_poster_link.dart';
 
-import '../../../config/helpers/human_formats.dart';
-
 class MovieFavoritesMasonry extends StatefulWidget {
   final List<Movie> movies;
   final VoidCallback? loadNextPage;
@@ -61,128 +59,84 @@ class _MovieFavoritesMasonryState extends State<MovieFavoritesMasonry> {
         itemBuilder: (context, index) {
           final movie = widget.movies[index];
           if (index == 1) {
-            return FadeInUp(
-              child: Column(
-                children: [
-                  const SizedBox(
-                    height: 40,
-                  ),
-                  SizedBox(
-                    height: 250,
-                    child: Column(
-                      children: [
-                        MoviePosterLink(movie: movie),
-                        const SizedBox(
-                          width: 5,
-                        ),
-
-                        // Title
-
-                        SizedBox(
-                          width: 150,
-                          child: Text(
-                            movie.title,
-                            maxLines: 1,
-                            style: textStyle.titleSmall!.copyWith(
-                                color: colors.onBackground,
-                                overflow: TextOverflow.ellipsis),
-                          ),
-                        ),
-
-                        //Rating
-
-                        SizedBox(
-                          width: 150,
-                          child: Row(
-                            children: [
-                              FaIcon(
-                                FontAwesomeIcons.starHalfStroke,
-                                color: Colors.yellow.shade900,
-                              ),
-                              const SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                '${movie.voteAverage}',
-                                style: textStyle.bodyMedium
-                                    ?.copyWith(color: Colors.yellow.shade900),
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              const Spacer(),
-                              Text(
-                                HumanFormats.number(movie.popularity),
-                                style: textStyle.bodySmall!
-                                    .copyWith(color: colors.onBackground),
-                              )
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+            return Column(
+              children: [
+                const SizedBox(
+                  height: 40,
+                ),
+                _MovieFavorite(
+                    movie: movie, textStyle: textStyle, colors: colors)
+              ],
             );
           }
-          return FadeInUp(
-            child: SizedBox(
-              height: 250,
-              child: Column(
+          return _MovieFavorite(
+              movie: movie, textStyle: textStyle, colors: colors);
+        },
+      ),
+    );
+  }
+}
+
+class _MovieFavorite extends StatelessWidget {
+  const _MovieFavorite({
+    required this.movie,
+    required this.textStyle,
+    required this.colors,
+  });
+
+  final Movie movie;
+  final TextTheme textStyle;
+  final ColorScheme colors;
+
+  @override
+  Widget build(BuildContext context) {
+    return FadeInUp(
+      child: SizedBox(
+        height: 250,
+        child: Column(
+          children: [
+            MoviePosterLink(movie: movie),
+            const SizedBox(
+              width: 5,
+            ),
+
+            // Title
+
+            SizedBox(
+              width: 150,
+              child: Text(
+                movie.title,
+                maxLines: 1,
+                style: textStyle.titleSmall!.copyWith(
+                    color: colors.onBackground,
+                    overflow: TextOverflow.ellipsis),
+              ),
+            ),
+
+            //Rating
+
+            SizedBox(
+              width: 150,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  MoviePosterLink(movie: movie),
+                  FaIcon(
+                    FontAwesomeIcons.starHalfStroke,
+                    color: Colors.yellow.shade900,
+                  ),
                   const SizedBox(
                     width: 5,
                   ),
-
-                  // Title
-
-                  SizedBox(
-                    width: 150,
-                    child: Text(
-                      movie.title,
-                      maxLines: 1,
-                      style: textStyle.titleSmall!.copyWith(
-                          color: colors.onBackground,
-                          overflow: TextOverflow.ellipsis),
-                    ),
-                  ),
-
-                  //Rating
-
-                  SizedBox(
-                    width: 150,
-                    child: Row(
-                      children: [
-                        FaIcon(
-                          FontAwesomeIcons.starHalfStroke,
-                          color: Colors.yellow.shade900,
-                        ),
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        Text(
-                          '${movie.voteAverage}',
-                          style: textStyle.bodyMedium
-                              ?.copyWith(color: Colors.yellow.shade900),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        const Spacer(),
-                        Text(
-                          HumanFormats.number(movie.popularity),
-                          style: textStyle.bodySmall,
-                        )
-                      ],
-                    ),
+                  Text(
+                    '${movie.voteAverage}',
+                    style: textStyle.bodyMedium
+                        ?.copyWith(color: Colors.yellow.shade900),
                   ),
                 ],
               ),
             ),
-          );
-        },
+          ],
+        ),
       ),
     );
   }
