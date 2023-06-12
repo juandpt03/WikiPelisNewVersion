@@ -20,4 +20,9 @@ class SharedPreferencesRepositoryImpl extends SharedPreferencesRepository {
   Future<void> changeColorTheme(String color) async {
     await datasource.changeColorTheme(color);
   }
+
+  @override
+  Future<String?> colorTheme() async {
+    return await datasource.colorTheme();
+  }
 }

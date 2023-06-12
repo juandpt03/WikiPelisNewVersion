@@ -17,11 +17,20 @@ class ThemeNotifier extends StateNotifier<AppTheme> {
 
   Future<void> _loadTheme() async {
     final isDarkMode = await repository.themeDark();
-    state = AppTheme(isDarkMode: isDarkMode ?? true);
+    final colorSchemeSeed = await repository.colorTheme();
+    state = AppTheme(
+        isDarkMode: isDarkMode ?? true,
+        colorSchemeSeed: colorSchemeSeed ?? 'ffD50000');
   }
 
   Future<void> toggleDarkMode() async {
     await repository.changeThemeDark(!state.isDarkMode!);
     state = state.copyWith(isDarkMode: await repository.themeDark());
+  }
+
+  Future<void> toggleTheme(String color) async {
+    await repository.changeColorTheme(color);
+
+    state = state.copyWith(colorSchemeSeed: await repository.colorTheme());
   }
 }

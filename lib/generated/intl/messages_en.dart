@@ -22,8 +22,12 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "aceptar": MessageLookupByLibrary.simpleMessage("Ok"),
+        "ajustesDeTema": MessageLookupByLibrary.simpleMessage("Theme Settings"),
         "buscarPelicula":
             MessageLookupByLibrary.simpleMessage("Search for a movie"),
+        "cambiarColorDeTema":
+            MessageLookupByLibrary.simpleMessage("change theme color"),
         "cargando": MessageLookupByLibrary.simpleMessage("Loading..."),
         "cargandoPeliculas":
             MessageLookupByLibrary.simpleMessage("Loading Movies"),
@@ -46,10 +50,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "llamandoAMiNovia":
             MessageLookupByLibrary.simpleMessage("Calling my girlfriend"),
         "mejoresCalificadas": MessageLookupByLibrary.simpleMessage("Top Rated"),
+        "modoLuzoscuridad":
+            MessageLookupByLibrary.simpleMessage("Light/Dark mode"),
         "populares": MessageLookupByLibrary.simpleMessage("Popular"),
         "proximamente": MessageLookupByLibrary.simpleMessage("Upcoming"),
         "revisaTuConexionAInternet": MessageLookupByLibrary.simpleMessage(
             "Please check your internet connection"),
+        "salir": MessageLookupByLibrary.simpleMessage("Close"),
+        "selecioneSuColorFavorito":
+            MessageLookupByLibrary.simpleMessage("Select your favorite color"),
         "yaMeroooo": MessageLookupByLibrary.simpleMessage("Yamerooo!")
       };
 }

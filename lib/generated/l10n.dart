@@ -259,6 +259,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Select your favorite color`
+  String get selecioneSuColorFavorito {
+    return Intl.message(
+      'Select your favorite color',
+      name: 'selecioneSuColorFavorito',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Close`
+  String get salir {
+    return Intl.message(
+      'Close',
+      name: 'salir',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ok`
+  String get aceptar {
+    return Intl.message(
+      'Ok',
+      name: 'aceptar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Theme Settings`
+  String get ajustesDeTema {
+    return Intl.message(
+      'Theme Settings',
+      name: 'ajustesDeTema',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `change theme color`
+  String get cambiarColorDeTema {
+    return Intl.message(
+      'change theme color',
+      name: 'cambiarColorDeTema',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Light/Dark mode`
+  String get modoLuzoscuridad {
+    return Intl.message(
+      'Light/Dark mode',
+      name: 'modoLuzoscuridad',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

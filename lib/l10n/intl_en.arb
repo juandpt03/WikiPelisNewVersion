@@ -19,5 +19,11 @@
   "yaMeroooo": "Yamerooo!",
   "estoEstTardandoMsDeLoEsperado": "This is taking longer than expected.",
   "esperePorFavor": "Please wait.",
-  "cargando": "Loading..."
+  "cargando": "Loading...",
+  "selecioneSuColorFavorito": "Select your favorite color",
+  "salir": "Close",
+  "aceptar": "Ok",
+  "ajustesDeTema": "Theme Settings",
+  "cambiarColorDeTema": "change theme color",
+  "modoLuzoscuridad": "Light/Dark mode"
 }

@@ -27,6 +27,7 @@ class MyApp extends ConsumerWidget {
     final theme = ref.watch(themeNotifierProvider);
     // chage with splashScreen
     if (theme.isDarkMode == null) return const SizedBox();
+
     return MaterialApp.router(
       localizationsDelegates: const [
         AppLocalizationDelegate(),

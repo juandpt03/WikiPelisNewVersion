@@ -19,5 +19,11 @@
   "yaMeroooo": "Ya meroooo",
   "estoEstTardandoMsDeLoEsperado": "Esto está tardando más de lo esperado",
   "esperePorFavor": "Espere por favor",
-  "cargando": "Cargando..."
+  "cargando": "Cargando...",
+  "selecioneSuColorFavorito": "Selecione su color favorito",
+  "salir": "Salir",
+  "aceptar": "Aceptar",
+  "ajustesDeTema": "Ajustes de Tema",
+  "cambiarColorDeTema": "Cambiar color de tema ",
+  "modoLuzoscuridad": "Modo Luz/Oscuridad"
 }

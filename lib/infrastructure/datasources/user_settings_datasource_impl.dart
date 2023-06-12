@@ -23,8 +23,14 @@ class UserSettingsDatasourceimpl extends SharedPreferencesDatasource {
   }
 
   @override
-  Future<void> changeColorTheme(String color) {
-    // TODO: implement changeColorTheme
-    throw UnimplementedError();
+  Future<void> changeColorTheme(String color) async {
+    final sharedPrefs = await prefs;
+    await sharedPrefs.setString('colorTheme', color);
+  }
+
+  @override
+  Future<String?> colorTheme() async {
+    final sharedPrefs = await prefs;
+    return sharedPrefs.getString('colorTheme')!;
   }
 }

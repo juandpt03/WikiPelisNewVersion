@@ -3,15 +3,17 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   final bool? isDarkMode;
+  final String? colorSchemeSeed;
 
-  AppTheme({this.isDarkMode});
+  AppTheme({this.colorSchemeSeed, this.isDarkMode});
   ThemeData getTheme() => ThemeData(
         useMaterial3: true,
-        colorSchemeSeed: const Color(0xffD50000),
+        colorSchemeSeed: Color(int.parse('0x${colorSchemeSeed!}')),
         brightness: isDarkMode! ? Brightness.dark : Brightness.light,
         textTheme: GoogleFonts.aBeeZeeTextTheme(),
       );
-  AppTheme copyWith({bool? isDarkMode}) => AppTheme(
-        isDarkMode: isDarkMode ?? this.isDarkMode!,
+  AppTheme copyWith({bool? isDarkMode, String? colorSchemeSeed}) => AppTheme(
+        isDarkMode: isDarkMode ?? this.isDarkMode,
+        colorSchemeSeed: colorSchemeSeed ?? this.colorSchemeSeed,
       );
 }
