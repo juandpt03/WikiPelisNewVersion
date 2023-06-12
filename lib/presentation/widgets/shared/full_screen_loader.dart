@@ -1,30 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:wikipelis/generated/l10n.dart';
 
 class FullScreenLoader extends StatelessWidget {
   const FullScreenLoader({super.key});
-  Stream<String> getLoadingMessage() {
-    List<String> messages = [
-      'Cargando Películas',
-      'Comprando Palomitas',
-      'Cargando populares',
-      'Llamando a mi novia',
-      'Revisa tu conexión a internet',
-      'Esto se puso extraño',
-      'Ya meroooo',
-      'Esto está tardando más de lo esperado',
-    ];
-    return Stream.periodic(const Duration(milliseconds: 1200), (step) {
-      return messages[step];
-    }).take(messages.length);
-  }
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+
+    Stream<String> getLoadingMessage() {
+      List<String> messages = [
+        S.of(context).cargandoPeliculas,
+        S.of(context).comprandoPalomitas,
+        S.of(context).cargandoPopulares,
+        S.of(context).llamandoAMiNovia,
+        S.of(context).revisaTuConexionAInternet,
+        S.of(context).estoSePusoExtrano,
+        S.of(context).yaMeroooo,
+        S.of(context).estoEstTardandoMsDeLoEsperado,
+      ];
+      return Stream.periodic(const Duration(milliseconds: 1200), (step) {
+        return messages[step];
+      }).take(messages.length);
+    }
+
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('Espere por favor'),
+          Text(
+            S.of(context).esperePorFavor,
+            style: TextStyle(color: colors.onBackground),
+          ),
           const SizedBox(
             height: 10,
           ),
@@ -37,8 +44,14 @@ class FullScreenLoader extends StatelessWidget {
           StreamBuilder(
             stream: getLoadingMessage(),
             builder: (context, AsyncSnapshot<String> snapshot) {
-              if (!snapshot.hasData) return const Text('Cargando...');
-              return Text(snapshot.data!);
+              if (!snapshot.hasData) {
+                return Text(
+                  S.of(context).cargando,
+                  style: TextStyle(color: colors.onBackground),
+                );
+              }
+              return Text(snapshot.data!,
+                  style: TextStyle(color: colors.onBackground));
             },
           )
         ],

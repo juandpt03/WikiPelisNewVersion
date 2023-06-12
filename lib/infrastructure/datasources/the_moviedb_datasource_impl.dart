@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:wikipelis/presentation/utils/app_language/app_language.dart';
 import 'package:wikipelis/config/constants/environment.dart';
 import 'package:wikipelis/domain/datasources/movies_datasource.dart';
 import 'package:wikipelis/domain/entities/genre.dart';
@@ -14,7 +15,7 @@ class TheMoviedbDatasourceImpl extends MoviesDataSource {
       baseUrl: 'https://api.themoviedb.org/3',
       queryParameters: {
         'api_key': Enviroment.theMovieDbKey,
-        'language': 'es-CO',
+        'language': AppLanguage.getLocale().toString().replaceAll('_', '-'),
       },
     ),
   );

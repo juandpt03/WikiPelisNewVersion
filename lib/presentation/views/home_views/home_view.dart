@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
+import 'package:wikipelis/generated/l10n.dart';
 import 'package:wikipelis/presentation/providers/providers.dart';
 import 'package:wikipelis/presentation/widgets/widgets.dart';
 
@@ -26,7 +27,8 @@ class _HomeViewState extends ConsumerState<HomeView> {
   @override
   Widget build(BuildContext context) {
     var now = DateTime.now();
-    var formatter = DateFormat('EEEE', 'es_ES');
+    var formatter =
+        DateFormat('EEEE', Localizations.localeOf(context).toLanguageTag());
     String dia = formatter.format(now);
     final colors = Theme.of(context).colorScheme;
     // Creando la variable para escuchar el Loading
@@ -62,7 +64,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
                     MovieSlidesShow(movies: slideShowMovies),
                     MovieHorizontalListView(
                       movies: nowPlayingMovies,
-                      title: 'En Cines',
+                      title: S.of(context).enCines,
                       subtitle: dia[0].toUpperCase() + dia.substring(1),
                       loadNextPage: () => ref
                           .read(nowPlayingMoviesProvider.notifier)
@@ -70,23 +72,23 @@ class _HomeViewState extends ConsumerState<HomeView> {
                     ),
                     MovieHorizontalListView(
                       movies: upComingMovies,
-                      title: 'Próximamente',
-                      subtitle: 'En este mes',
+                      title: S.of(context).proximamente,
+                      subtitle: S.of(context).enEsteMes,
                       loadNextPage: () => ref
                           .read(upComingMoviesProvider.notifier)
                           .loadNextPage(),
                     ),
                     MovieHorizontalListView(
                       movies: popularMovies,
-                      title: 'Populares',
+                      title: S.of(context).populares,
                       loadNextPage: () => ref
                           .read(popularMoviesProvider.notifier)
                           .loadNextPage(),
                     ),
                     MovieHorizontalListView(
                       movies: topRatedMovies,
-                      title: 'Mejores Calificadas',
-                      subtitle: 'Desde Siempre',
+                      title: S.of(context).mejoresCalificadas,
+                      subtitle: S.of(context).desdeSiempre,
                       loadNextPage: () => ref
                           .read(topRatedMoviesProvider.notifier)
                           .loadNextPage(),

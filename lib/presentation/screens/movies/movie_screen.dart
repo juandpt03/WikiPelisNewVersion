@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
+import 'package:wikipelis/domain/entities/genre.dart';
+
 import 'package:wikipelis/domain/entities/movie.dart';
 import 'package:wikipelis/presentation/providers/providers.dart';
+import 'package:wikipelis/presentation/widgets/movies/movie_poster_link.dart';
 
 class MovieScreen extends ConsumerStatefulWidget {
   final String movieId;
@@ -64,83 +67,131 @@ class _MovieDetails extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     final genres = ref.watch(moviesGenresProvider);
-    final colors = Theme.of(context).colorScheme;
-    final Size size = MediaQuery.of(context).size;
-    final textStyle = Theme.of(context).textTheme;
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image.network(
-                  movie.posterPath,
-                  width: size.width * 0.3,
-                ),
-              ),
+            _MoviePoster(
+              movie: movie,
             ),
             const SizedBox(
               width: 10,
             ),
-            SizedBox(
-              width: (size.width) * 0.6,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: Text(
-                      movie.title,
-                      style: textStyle.titleLarge!
-                          .copyWith(color: colors.onBackground),
-                    ),
-                  ),
-                  Text(
-                    movie.overview,
-                    textAlign: TextAlign.justify,
-                    style: textStyle.bodyLarge!
-                        .copyWith(color: colors.onBackground),
-                  ),
-                ],
-              ),
-            )
+            _MovieInfo(movie: movie)
           ],
         ),
-        Wrap(
-          alignment: WrapAlignment.start,
-          children: [
-            ...movie.genreIds
-                .map(
-                  (genero) => Container(
-                    margin:
-                        const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                    child: GestureDetector(
-                      onTap: () {
-                        final String genreId = genres
-                            .firstWhere((genre) => genre.name == genero)
-                            .id;
-
-                        context.push('/home/1/categories/$genreId');
-                      },
-                      child: Chip(
-                        label: Text(
-                          genero,
-                          style: TextStyle(color: colors.onBackground),
-                        ),
-                        shape: const StadiumBorder(),
-                      ),
-                    ),
-                  ),
-                )
-                .toList()
-          ],
+        _MovieGenres(
+          movie: movie,
+          genres: genres,
         ),
         _ActorsByMovie(movieId: movie.id.toString())
       ],
+    );
+  }
+}
+
+class _MovieGenres extends StatelessWidget {
+  const _MovieGenres({
+    required this.movie,
+    required this.genres,
+  });
+
+  final Movie movie;
+  final List<Genre> genres;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+    return Wrap(
+      spacing: 20,
+      children: [
+        ...movie.genreIds
+            .map(
+              (genero) => GestureDetector(
+                onTap: () {
+                  final String genreId =
+                      genres.firstWhere((genre) => genre.name == genero).id;
+
+                  context.push('/home/1/categories/$genreId');
+                },
+                child: Chip(
+                  label: Text(
+                    genero,
+                    style: TextStyle(color: colors.onBackground),
+                  ),
+                  shape: const StadiumBorder(),
+                ),
+              ),
+            )
+            .toList()
+      ],
+    );
+  }
+}
+
+class _MovieInfo extends StatelessWidget {
+  const _MovieInfo({
+    required this.movie,
+  });
+
+  final Movie movie;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+    final Size size = MediaQuery.of(context).size;
+    final textStyle = Theme.of(context).textTheme;
+    return SizedBox(
+      width: (size.width) * 0.6,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: Text(
+              movie.title,
+              style: textStyle.titleLarge!.copyWith(color: colors.onBackground),
+            ),
+          ),
+          Text(
+            movie.overview,
+            textAlign: TextAlign.justify,
+            style: textStyle.bodyLarge!.copyWith(color: colors.onBackground),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _MoviePoster extends StatelessWidget {
+  const _MoviePoster({
+    required this.movie,
+  });
+
+  final Movie movie;
+
+  @override
+  Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+      child: Column(
+        children: [
+          SizedBox(
+            width: size.width * 0.3,
+            child: IgnorePointer(
+                child: MoviePosterLink(
+              movie: movie,
+              height: 250,
+            )),
+          ),
+        ],
+      ),
     );
   }
 }

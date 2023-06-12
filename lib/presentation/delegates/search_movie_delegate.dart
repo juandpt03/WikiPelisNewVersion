@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:wikipelis/config/helpers/human_formats.dart';
 import 'package:wikipelis/domain/entities/movie.dart';
+import 'package:wikipelis/generated/l10n.dart';
 
 typedef SearchMoviesCallback = Future<List<Movie>> Function(String query);
 
 class SearchMovieDelegate extends SearchDelegate<Movie?> {
   List<Movie> initialMovies;
   final SearchMoviesCallback searchMovies;
+  final BuildContext context;
   void clearStreams() {
     debouncedMovies.close();
   }
@@ -53,9 +55,16 @@ class SearchMovieDelegate extends SearchDelegate<Movie?> {
   }
 
   SearchMovieDelegate(
-      {required this.initialMovies, required this.searchMovies});
+      {required this.initialMovies,
+      required this.searchMovies,
+      required this.context})
+      : super(
+          searchFieldStyle:
+              TextStyle(color: Theme.of(context).colorScheme.onBackground),
+        );
+
   @override
-  String get searchFieldLabel => 'Buscar Película';
+  String get searchFieldLabel => S.of(context).buscarPelicula;
   @override
   List<Widget>? buildActions(BuildContext context) {
     return [
@@ -124,6 +133,7 @@ class _MovieItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final textStyle = Theme.of(context).textTheme;
     final Size size = MediaQuery.of(context).size;
+    final colors = Theme.of(context).colorScheme;
     return GestureDetector(
       onTap: () {
         onMovieSelected(context, movie);
@@ -157,14 +167,20 @@ class _MovieItem extends StatelessWidget {
                 children: [
                   Text(
                     movie.title,
-                    style: textStyle.titleMedium,
+                    style: textStyle.titleMedium!
+                        .copyWith(color: colors.onBackground),
                   ),
                   (movie.overview.length > 100)
                       ? Text(
                           '${movie.overview.substring(0, 100)}...',
-                          style: textStyle.bodyMedium,
+                          style: textStyle.bodyMedium!
+                              .copyWith(color: colors.onBackground),
                         )
-                      : Text(movie.overview),
+                      : Text(
+                          movie.overview,
+                          style: textStyle.bodyMedium!
+                              .copyWith(color: colors.onBackground),
+                        ),
                   Row(
                     children: [
                       Icon(
