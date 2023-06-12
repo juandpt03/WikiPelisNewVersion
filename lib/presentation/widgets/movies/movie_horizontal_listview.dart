@@ -1,9 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:go_router/go_router.dart';
-import 'package:wikipelis/config/helpers/human_formats.dart';
 import 'package:wikipelis/domain/entities/movie.dart';
+import 'package:wikipelis/presentation/widgets/movies/movie_poster_link.dart';
 
 class MovieHorizontalListView extends StatefulWidget {
   final List<Movie> movies;
@@ -46,28 +44,27 @@ class _MovieHorizontalListViewState extends State<MovieHorizontalListView> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 380,
-      width: double.infinity,
-      child: Column(
-        children: [
-          if (widget.title != null || widget.subtitle != null)
-            _Title(subtitle: widget.subtitle, title: widget.title),
-          Expanded(
-            child: ListView.builder(
-              controller: scrollController,
-              itemCount: widget.movies.length,
-              scrollDirection: Axis.horizontal,
-              physics: const BouncingScrollPhysics(),
-              itemBuilder: (context, index) {
-                return FadeInRight(
-                  child: _Slider(movie: widget.movies[index]),
-                );
-              },
-            ),
-          )
-        ],
-      ),
+    final Size size = MediaQuery.of(context).size;
+
+    return Column(
+      children: [
+        if (widget.title != null || widget.subtitle != null)
+          _Title(subtitle: widget.subtitle, title: widget.title),
+        SizedBox(
+          height: size.height * 0.35,
+          child: ListView.builder(
+            controller: scrollController,
+            itemCount: widget.movies.length,
+            scrollDirection: Axis.horizontal,
+            physics: const BouncingScrollPhysics(),
+            itemBuilder: (context, index) {
+              return FadeInRight(
+                child: _Slider(movie: widget.movies[index]),
+              );
+            },
+          ),
+        )
+      ],
     );
   }
 }
@@ -81,92 +78,12 @@ class _Slider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).colorScheme;
-    final textStyle = Theme.of(context).textTheme;
+    final Size size = MediaQuery.of(context).size;
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 8),
-      child: Column(
-        children: [
-          // Poster
-          Padding(
-            padding: const EdgeInsets.only(bottom: 5),
-            child: SizedBox(
-              width: 150,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image.network(
-                  width: 150,
-                  height: 250,
-                  movie.posterPath,
-                  fit: BoxFit.cover,
-                  loadingBuilder: (context, child, loadingProgress) {
-                    if (loadingProgress != null) {
-                      return const SizedBox(
-                        width: 150,
-                        height: 250,
-                        child: Center(
-                          child: CircularProgressIndicator(
-                            strokeWidth: 2,
-                          ),
-                        ),
-                      );
-                    }
-                    return GestureDetector(
-                        onTap: () => context.push('/home/0/movie/${movie.id}'),
-                        child: FadeIn(child: child));
-                  },
-                ),
-              ),
-            ),
-          ),
-          const SizedBox(
-            width: 5,
-          ),
-
-          // Title
-
-          SizedBox(
-            width: 150,
-            child: Text(
-              movie.title,
-              maxLines: 1,
-              style: textStyle.titleSmall?.copyWith(
-                overflow: TextOverflow.ellipsis,
-                color: colors.onBackground,
-              ),
-            ),
-          ),
-
-          //Rating
-
-          SizedBox(
-            width: 150,
-            child: Row(
-              children: [
-                FaIcon(
-                  FontAwesomeIcons.starHalfStroke,
-                  color: Colors.yellow.shade900,
-                ),
-                const SizedBox(
-                  width: 5,
-                ),
-                Text(
-                  '${movie.voteAverage}',
-                  style: textStyle.bodyMedium
-                      ?.copyWith(color: Colors.yellow.shade900),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                const Spacer(),
-                Text(
-                  HumanFormats.number(movie.popularity),
-                  style: textStyle.bodySmall,
-                )
-              ],
-            ),
-          ),
-        ],
+      child: SizedBox(
+        width: 150,
+        child: MoviePosterLink(movie: movie, height: size.height * 0.42),
       ),
     );
   }

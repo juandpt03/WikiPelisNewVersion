@@ -9,7 +9,7 @@ class HomeScreen extends StatelessWidget {
     HomeView(),
     CategoriesView(),
     FavoritesView(),
-    SizedBox(),
+    SettingsView(),
   ];
   const HomeScreen({
     super.key,

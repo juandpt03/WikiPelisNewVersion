@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:wikipelis/generated/l10n.dart';
 
 class CustomBottomNavigation extends StatelessWidget {
   final int currentIndex;
@@ -40,22 +41,22 @@ class CustomBottomNavigation extends StatelessWidget {
         //   colors.primary.withOpacity(0.1),
         // ]),
         // tabBorder: Border.all(color: colors.secondary),
-        tabs: const [
+        tabs: [
           GButton(
             icon: FontAwesomeIcons.house,
-            text: 'Inicio',
+            text: S.of(context).inicio,
           ),
           GButton(
             icon: FontAwesomeIcons.tags,
-            text: 'Categorias',
+            text: S.of(context).categorias,
           ),
           GButton(
             icon: FontAwesomeIcons.solidHeart,
-            text: 'Favoritos',
+            text: S.of(context).favoritos,
           ),
           GButton(
             icon: FontAwesomeIcons.wrench,
-            text: 'Configuraciones',
+            text: S.of(context).configuraciones,
           )
         ]);
 
