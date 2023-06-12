@@ -27,20 +27,24 @@ class MoviePosterLink extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(20),
-              child: Image.network(
+              child: SizedBox(
                 height: height * 0.65,
-                movie.posterPath,
-                loadingBuilder: (context, child, loadingProgress) {
-                  if (loadingProgress != null) {
-                    return Container(
-                      height: height * 0.65,
-                      decoration: _loadingImage(),
-                      child: const Center(
-                          child: CircularProgressIndicator(strokeWidth: 1)),
-                    );
-                  }
-                  return FadeIn(child: child);
-                },
+                child: Image.network(
+                  height: height * 0.65,
+                  movie.posterPath,
+                  fit: BoxFit.cover,
+                  loadingBuilder: (context, child, loadingProgress) {
+                    if (loadingProgress != null) {
+                      return Container(
+                        height: height * 0.65,
+                        decoration: _loadingImage(),
+                        child: const Center(
+                            child: CircularProgressIndicator(strokeWidth: 1)),
+                      );
+                    }
+                    return FadeIn(child: child);
+                  },
+                ),
               ),
             ),
             const SizedBox(

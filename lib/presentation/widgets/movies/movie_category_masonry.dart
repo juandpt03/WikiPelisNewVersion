@@ -61,7 +61,7 @@ class _MovieCategoryMasonryState extends ConsumerState<MovieCategoryMasonry> {
           controller: inifiniteScrollController,
           itemCount: movies.length,
           crossAxisCount: 3,
-          mainAxisSpacing: 10,
+          // mainAxisSpacing: 10,
           crossAxisSpacing: 10,
           itemBuilder: (context, index) {
             final movie = movies[index];

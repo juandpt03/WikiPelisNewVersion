@@ -45,6 +45,7 @@ class _MovieHorizontalListViewState extends State<MovieHorizontalListView> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+
     return Column(
       children: [
         if (widget.title != null || widget.subtitle != null)

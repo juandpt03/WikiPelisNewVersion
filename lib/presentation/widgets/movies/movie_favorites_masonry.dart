@@ -50,7 +50,7 @@ class _MovieFavoritesMasonryState extends State<MovieFavoritesMasonry> {
         controller: inifiniteScrollController,
         itemCount: widget.movies.length,
         crossAxisCount: 3,
-        mainAxisSpacing: 10,
+        // mainAxisSpacing: 10,
         crossAxisSpacing: 10,
         itemBuilder: (context, index) {
           final movie = widget.movies[index];
