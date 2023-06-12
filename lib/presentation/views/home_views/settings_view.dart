@@ -10,17 +10,19 @@ class SettingsView extends ConsumerWidget {
   Widget build(BuildContext context, ref) {
     final textStyle = Theme.of(context).textTheme;
     final colors = Theme.of(context).colorScheme;
-    final isDarkMode = ref.watch(isDarkModeProvider);
+
+    final isDarkMode = ref.watch(themeNotifierProvider).isDarkMode;
+
     return Scaffold(
       appBar: AppBar(
         actions: [
           IconButton(
               onPressed: () {
-                ref.read(isDarkModeProvider.notifier).update((state) => !state);
+                ref.read(themeNotifierProvider.notifier).toggleDarkMode();
               },
-              icon: isDarkMode
-                  ? const Icon(Icons.dark_mode)
-                  : const Icon(Icons.light_mode))
+              icon: isDarkMode!
+                  ? const Icon(Icons.light_mode)
+                  : const Icon(Icons.dark_mode)),
         ],
         title: Text(
           S.of(context).configuraciones,
@@ -30,8 +32,11 @@ class SettingsView extends ConsumerWidget {
         ),
       ),
       body: const Center(
-        child: Text('SettingsView'),
-      ),
+          child: Column(
+        children: [
+          Text('SettingsView'),
+        ],
+      )),
     );
   }
 }

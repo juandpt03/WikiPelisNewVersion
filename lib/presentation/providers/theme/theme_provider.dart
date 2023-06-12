@@ -1,20 +1,27 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wikipelis/config/theme/app_theme.dart';
+import 'package:wikipelis/domain/repositories/shared_preferences_repository.dart';
+import 'package:wikipelis/presentation/providers/theme/settings_theme_respository.dart';
 
-//Un simple boolean
-final isDarkModeProvider = StateProvider<bool>((isDarkMode) => true);
-//Lista de colores inmutables
-
-//Un simple entero
 //StateNotifierProvider
-final themeNotifierProvider =
-    StateNotifierProvider<ThemeNotifier, AppTheme>((ref) => ThemeNotifier());
+final themeNotifierProvider = StateNotifierProvider<ThemeNotifier, AppTheme>(
+    (ref) =>
+        ThemeNotifier(repository: ref.watch(settingsThemeRepositoryProvider)));
 //Controller o Notifier
 
 class ThemeNotifier extends StateNotifier<AppTheme> {
-  ThemeNotifier() : super(AppTheme());
+  final SharedPreferencesRepository repository;
+  ThemeNotifier({required this.repository}) : super(AppTheme()) {
+    _loadTheme();
+  }
 
-  void toggleDarkMode() {
-    state = state.copyWith(isDarkMode: !state.isDarkMode);
+  Future<void> _loadTheme() async {
+    final isDarkMode = await repository.themeDark();
+    state = AppTheme(isDarkMode: isDarkMode ?? true);
+  }
+
+  Future<void> toggleDarkMode() async {
+    await repository.changeThemeDark(!state.isDarkMode!);
+    state = state.copyWith(isDarkMode: await repository.themeDark());
   }
 }
