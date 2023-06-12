@@ -24,7 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "aceptar": MessageLookupByLibrary.simpleMessage("Aceptar"),
         "ajustesDeTema":
-            MessageLookupByLibrary.simpleMessage("Ajustes de Tema"),
+            MessageLookupByLibrary.simpleMessage("Ajustes de tema"),
         "buscarPelicula":
             MessageLookupByLibrary.simpleMessage("Buscar Película"),
         "cambiarColorDeTema":
@@ -37,11 +37,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "categorias": MessageLookupByLibrary.simpleMessage("Categorías"),
         "comprandoPalomitas":
             MessageLookupByLibrary.simpleMessage("Comprando Palomitas"),
+        "configuracinDeIdioma":
+            MessageLookupByLibrary.simpleMessage("Configuración de idioma"),
         "configuraciones":
             MessageLookupByLibrary.simpleMessage("Configuraciones"),
         "desdeSiempre": MessageLookupByLibrary.simpleMessage("Desde Siempre"),
         "enCines": MessageLookupByLibrary.simpleMessage("En Cines"),
         "enEsteMes": MessageLookupByLibrary.simpleMessage("En este mes"),
+        "espanol": MessageLookupByLibrary.simpleMessage("Español"),
         "esperePorFavor":
             MessageLookupByLibrary.simpleMessage("Espere por favor"),
         "estoEstTardandoMsDeLoEsperado": MessageLookupByLibrary.simpleMessage(
@@ -49,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "estoSePusoExtrano":
             MessageLookupByLibrary.simpleMessage("Esto se puso extraño"),
         "favoritos": MessageLookupByLibrary.simpleMessage("Favoritos"),
+        "ingles": MessageLookupByLibrary.simpleMessage("Inglés"),
         "inicio": MessageLookupByLibrary.simpleMessage("Inicio"),
         "llamandoAMiNovia":
             MessageLookupByLibrary.simpleMessage("Llamando a mi novia"),
@@ -63,6 +67,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "salir": MessageLookupByLibrary.simpleMessage("Salir"),
         "selecioneSuColorFavorito":
             MessageLookupByLibrary.simpleMessage("Selecione su color favorito"),
+        "selecioneSuIdioma":
+            MessageLookupByLibrary.simpleMessage("Selecione su idioma"),
         "yaMeroooo": MessageLookupByLibrary.simpleMessage("Ya meroooo")
       };
 }

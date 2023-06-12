@@ -23,7 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "aceptar": MessageLookupByLibrary.simpleMessage("Ok"),
-        "ajustesDeTema": MessageLookupByLibrary.simpleMessage("Theme Settings"),
+        "ajustesDeTema": MessageLookupByLibrary.simpleMessage("Theme settings"),
         "buscarPelicula":
             MessageLookupByLibrary.simpleMessage("Search for a movie"),
         "cambiarColorDeTema":
@@ -36,16 +36,20 @@ class MessageLookup extends MessageLookupByLibrary {
         "categorias": MessageLookupByLibrary.simpleMessage("Categories"),
         "comprandoPalomitas":
             MessageLookupByLibrary.simpleMessage("Buying Popcorn"),
+        "configuracinDeIdioma":
+            MessageLookupByLibrary.simpleMessage("Language settings"),
         "configuraciones": MessageLookupByLibrary.simpleMessage("Settings"),
         "desdeSiempre": MessageLookupByLibrary.simpleMessage("All the time"),
         "enCines": MessageLookupByLibrary.simpleMessage("At the cinema"),
         "enEsteMes": MessageLookupByLibrary.simpleMessage("In this month"),
+        "espanol": MessageLookupByLibrary.simpleMessage("Spanish"),
         "esperePorFavor": MessageLookupByLibrary.simpleMessage("Please wait."),
         "estoEstTardandoMsDeLoEsperado": MessageLookupByLibrary.simpleMessage(
             "This is taking longer than expected."),
         "estoSePusoExtrano":
             MessageLookupByLibrary.simpleMessage("How strange"),
         "favoritos": MessageLookupByLibrary.simpleMessage("Favorites"),
+        "ingles": MessageLookupByLibrary.simpleMessage("English"),
         "inicio": MessageLookupByLibrary.simpleMessage("Home"),
         "llamandoAMiNovia":
             MessageLookupByLibrary.simpleMessage("Calling my girlfriend"),
@@ -59,6 +63,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "salir": MessageLookupByLibrary.simpleMessage("Close"),
         "selecioneSuColorFavorito":
             MessageLookupByLibrary.simpleMessage("Select your favorite color"),
+        "selecioneSuIdioma":
+            MessageLookupByLibrary.simpleMessage("Select your language"),
         "yaMeroooo": MessageLookupByLibrary.simpleMessage("Yamerooo!")
       };
 }

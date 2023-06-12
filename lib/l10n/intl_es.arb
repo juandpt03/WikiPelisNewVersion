@@ -23,7 +23,11 @@
   "selecioneSuColorFavorito": "Selecione su color favorito",
   "salir": "Salir",
   "aceptar": "Aceptar",
-  "ajustesDeTema": "Ajustes de Tema",
+  "ajustesDeTema": "Ajustes de tema",
   "cambiarColorDeTema": "Cambiar color de tema ",
-  "modoLuzoscuridad": "Modo Luz/Oscuridad"
+  "modoLuzoscuridad": "Modo Luz/Oscuridad",
+  "configuracinDeIdioma": "Configuración de idioma",
+  "selecioneSuIdioma": "Selecione su idioma",
+  "espanol": "Español",
+  "ingles": "Inglés"
 }

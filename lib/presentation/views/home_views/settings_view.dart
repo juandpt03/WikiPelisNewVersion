@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:wikipelis/generated/l10n.dart';
 import 'package:wikipelis/presentation/providers/theme/theme_provider.dart';
 
@@ -12,6 +13,7 @@ class SettingsView extends ConsumerWidget {
   Widget build(BuildContext context, ref) {
     final textStyle = Theme.of(context).textTheme;
     final colors = Theme.of(context).colorScheme;
+
     final subtextStyle = Theme.of(context).textTheme.labelLarge!.copyWith(
           color: colors.secondary,
         );
@@ -37,9 +39,7 @@ class SettingsView extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _CardThemeSettings(
-                colors: colors,
-                subtextStyle: subtextStyle,
-                isDarkMode: isDarkMode),
+                subtextStyle: subtextStyle, isDarkMode: isDarkMode),
           ],
         ),
       ),
@@ -49,17 +49,16 @@ class SettingsView extends ConsumerWidget {
 
 class _CardThemeSettings extends ConsumerWidget {
   const _CardThemeSettings({
-    required this.colors,
     required this.subtextStyle,
     required this.isDarkMode,
   });
 
-  final ColorScheme colors;
   final TextStyle subtextStyle;
   final bool? isDarkMode;
 
   @override
   Widget build(BuildContext context, ref) {
+    final colors = Theme.of(context).colorScheme;
     final Size size = MediaQuery.of(context).size;
     Color? currentColor = Color(
         int.parse('0x${ref.watch(themeNotifierProvider).colorSchemeSeed}'));
@@ -106,21 +105,9 @@ class _CardThemeSettings extends ConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Card(
-          // margin: const EdgeInsets.all(20),
-          shape: const RoundedRectangleBorder(),
-          child: ListTile(
-            contentPadding: const EdgeInsets.symmetric(horizontal: 10),
-            title: Text(
-              S.of(context).ajustesDeTema,
-              style:
-                  TextStyle(color: colors.primary, fontWeight: FontWeight.bold),
-            ),
-            leading: Icon(
-              Icons.colorize_sharp,
-              color: colors.primary,
-            ),
-          ),
+        _CardSection(
+          title: S.of(context).ajustesDeTema,
+          icon: Icons.colorize_sharp,
         ),
         TextButton.icon(
           onPressed: () => colorPicker(context),
@@ -142,6 +129,35 @@ class _CardThemeSettings extends ConsumerWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class _CardSection extends StatelessWidget {
+  final IconData icon;
+  final String title;
+  const _CardSection({
+    required this.title,
+    required this.icon,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+    return Card(
+      // margin: const EdgeInsets.all(20),
+      shape: const RoundedRectangleBorder(),
+      child: ListTile(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+        title: Text(
+          title,
+          style: TextStyle(color: colors.primary, fontWeight: FontWeight.bold),
+        ),
+        leading: Icon(
+          icon,
+          color: colors.primary,
+        ),
+      ),
     );
   }
 }

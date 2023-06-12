@@ -23,7 +23,11 @@
   "selecioneSuColorFavorito": "Select your favorite color",
   "salir": "Close",
   "aceptar": "Ok",
-  "ajustesDeTema": "Theme Settings",
+  "ajustesDeTema": "Theme settings",
   "cambiarColorDeTema": "change theme color",
-  "modoLuzoscuridad": "Light/Dark mode"
+  "modoLuzoscuridad": "Light/Dark mode",
+  "configuracinDeIdioma": "Language settings",
+  "selecioneSuIdioma": "Select your language",
+  "espanol": "Spanish",
+  "ingles": "English"
 }

@@ -290,10 +290,10 @@ class S {
     );
   }
 
-  /// `Theme Settings`
+  /// `Theme settings`
   String get ajustesDeTema {
     return Intl.message(
-      'Theme Settings',
+      'Theme settings',
       name: 'ajustesDeTema',
       desc: '',
       args: [],
@@ -315,6 +315,46 @@ class S {
     return Intl.message(
       'Light/Dark mode',
       name: 'modoLuzoscuridad',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Language settings`
+  String get configuracinDeIdioma {
+    return Intl.message(
+      'Language settings',
+      name: 'configuracinDeIdioma',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select your language`
+  String get selecioneSuIdioma {
+    return Intl.message(
+      'Select your language',
+      name: 'selecioneSuIdioma',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Spanish`
+  String get espanol {
+    return Intl.message(
+      'Spanish',
+      name: 'espanol',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `English`
+  String get ingles {
+    return Intl.message(
+      'English',
+      name: 'ingles',
       desc: '',
       args: [],
     );

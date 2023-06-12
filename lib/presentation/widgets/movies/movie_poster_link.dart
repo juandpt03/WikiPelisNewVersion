@@ -71,7 +71,7 @@ class MoviePosterLink extends StatelessWidget {
                   width: 5,
                 ),
                 Text(
-                  '${movie.voteAverage}',
+                  movie.voteAverage.toString().substring(0, 3),
                   style: textStyle.bodyMedium
                       ?.copyWith(color: Colors.yellow.shade900),
                 ),
