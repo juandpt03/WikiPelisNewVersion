@@ -31,6 +31,6 @@ class UserSettingsDatasourceimpl extends SharedPreferencesDatasource {
   @override
   Future<String?> colorTheme() async {
     final sharedPrefs = await prefs;
-    return sharedPrefs.getString('colorTheme')!;
+    return sharedPrefs.getString('colorTheme');
   }
 }
