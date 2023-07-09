@@ -17,3 +17,8 @@ flutter pub run change_app_package_name:main com.juandpt.WikiPelis
 
 ```
 
+Para cambiar el ícono de la aplicación
+```
+flutter pub run flutter_launcher_icons
+
+```
