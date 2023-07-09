@@ -1,4 +1,4 @@
-package com.example.wikipelis
+package com.juandpt.WikiPelis
 
 import io.flutter.embedding.android.FlutterActivity
 

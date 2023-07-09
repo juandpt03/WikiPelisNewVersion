@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.wikipelis">
+    package="com.juandpt.WikiPelis">
    <application
         android:label="wikipelis"
         android:name="${applicationName}"
