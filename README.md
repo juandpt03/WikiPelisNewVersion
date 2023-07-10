@@ -22,3 +22,8 @@ Para cambiar el ícono de la aplicación
 flutter pub run flutter_launcher_icons
 
 ```
+Para cambiar el Splash Screen
+```
+dart run flutter_native_splash:create
+
+```

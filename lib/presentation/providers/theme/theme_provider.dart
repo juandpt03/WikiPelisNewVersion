@@ -19,7 +19,7 @@ class ThemeNotifier extends StateNotifier<AppTheme> {
     final isDarkMode = await repository.themeDark();
     final colorSchemeSeed = await repository.colorTheme();
     state = AppTheme(
-        isDarkMode: isDarkMode ?? true,
+        isDarkMode: isDarkMode ?? false,
         colorSchemeSeed: colorSchemeSeed ?? 'ffD50000');
   }
 
