@@ -56,6 +56,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "mejoresCalificadas": MessageLookupByLibrary.simpleMessage("Top Rated"),
         "modoLuzoscuridad":
             MessageLookupByLibrary.simpleMessage("Light/Dark mode"),
+        "noSeEncontroNingunTrailer":
+            MessageLookupByLibrary.simpleMessage("No Trailer found"),
         "populares": MessageLookupByLibrary.simpleMessage("Popular"),
         "proximamente": MessageLookupByLibrary.simpleMessage("Upcoming"),
         "revisaTuConexionAInternet": MessageLookupByLibrary.simpleMessage(

@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
-import 'package:wikipelis/domain/entities/genre.dart';
+import 'package:wikipelis/domain/entities/entities.dart';
 
-import 'package:wikipelis/domain/entities/movie.dart';
 import 'package:wikipelis/presentation/providers/providers.dart';
 import 'package:wikipelis/presentation/widgets/movies/movie_poster_link.dart';
+import 'package:wikipelis/presentation/widgets/trailers/movie_trailers_box.dart';
 
 class MovieScreen extends ConsumerStatefulWidget {
   final String movieId;
@@ -68,27 +68,30 @@ class _MovieDetails extends ConsumerWidget {
   Widget build(BuildContext context, ref) {
     final genres = ref.watch(moviesGenresProvider);
 
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _MoviePoster(
-              movie: movie,
-            ),
-            const SizedBox(
-              width: 10,
-            ),
-            _MovieInfo(movie: movie)
-          ],
-        ),
-        _MovieGenres(
-          movie: movie,
-          genres: genres,
-        ),
-        _ActorsByMovie(movieId: movie.id.toString())
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _MoviePoster(
+                movie: movie,
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              _MovieInfo(movie: movie)
+            ],
+          ),
+          MovieTrailersBox(movieId: movie.id.toString(),),
+          _MovieGenres(
+            movie: movie,
+            genres: genres,
+          ),
+          _ActorsByMovie(movieId: movie.id.toString())
+        ],
+      ),
     );
   }
 }

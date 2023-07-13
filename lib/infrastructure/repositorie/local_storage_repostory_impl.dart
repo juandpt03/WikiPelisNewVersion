@@ -1,5 +1,5 @@
 import 'package:wikipelis/domain/datasources/local_storage_datasource.dart';
-import 'package:wikipelis/domain/entities/movie.dart';
+import 'package:wikipelis/domain/entities/entities.dart';
 import 'package:wikipelis/domain/repositories/local_storage_repository.dart';
 
 class LocalStorageRepositoryImpl extends LocalStorageRepository {

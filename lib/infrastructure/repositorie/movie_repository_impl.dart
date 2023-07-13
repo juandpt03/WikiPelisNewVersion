@@ -1,6 +1,6 @@
 import 'package:wikipelis/domain/datasources/movies_datasource.dart';
-import 'package:wikipelis/domain/entities/genre.dart';
-import 'package:wikipelis/domain/entities/movie.dart';
+import 'package:wikipelis/domain/entities/entities.dart';
+
 import 'package:wikipelis/domain/repositories/movies_repository.dart';
 
 class MovieRepositoryImpl extends MoviesRepository {
@@ -45,5 +45,10 @@ class MovieRepositoryImpl extends MoviesRepository {
   @override
   Future<List<Genre>> getMovieGenres() {
     return dataSource.getMovieGenres();
+  }
+
+  @override
+  Future<List<MovieTrailers>> getMovieTrailers({required String movieId}) {
+    return dataSource.getMovieTrailers(movieId: movieId);
   }
 }

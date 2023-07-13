@@ -29,5 +29,6 @@
   "configuracinDeIdioma": "Configuración de idioma",
   "selecioneSuIdioma": "Selecione su idioma",
   "espanol": "Español",
-  "ingles": "Inglés"
+  "ingles": "Inglés",
+  "noSeEncontroNingunTrailer": "No se encontró ningún Trailer"
 }

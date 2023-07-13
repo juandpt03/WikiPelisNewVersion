@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
+import 'package:wikipelis/infrastructure/mappers/mappers.dart';
 import 'package:wikipelis/presentation/utils/app_language/app_language.dart';
 import 'package:wikipelis/config/constants/environment.dart';
 import 'package:wikipelis/domain/datasources/actors_datasource.dart';
 import 'package:wikipelis/domain/entities/actor.dart';
-import 'package:wikipelis/infrastructure/mappers/actor_mapper.dart';
 import 'package:wikipelis/infrastructure/models/moviedb/credits_response.dart';
 
 class ActorMovieDatasource extends ActorsDataSource {

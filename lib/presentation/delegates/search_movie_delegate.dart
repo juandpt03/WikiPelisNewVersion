@@ -147,10 +147,12 @@ class _MovieItem extends StatelessWidget {
           children: [
             //Image
             SizedBox(
-              width: size.width * 0.2,
+              height: size.height * 0.13,
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(10),
                 child: Image.network(
+                  width: size.width * 0.18,
+                  height: size.height * 0.13,
                   movie.posterPath,
                   loadingBuilder: (context, child, loadingProgress) =>
                       FadeIn(child: child),

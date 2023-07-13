@@ -359,6 +359,16 @@ class S {
       args: [],
     );
   }
+
+  /// `No Trailer found`
+  String get noSeEncontroNingunTrailer {
+    return Intl.message(
+      'No Trailer found',
+      name: 'noSeEncontroNingunTrailer',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

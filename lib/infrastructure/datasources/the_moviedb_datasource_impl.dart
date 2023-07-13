@@ -1,13 +1,12 @@
 import 'package:dio/dio.dart';
+import 'package:wikipelis/domain/entities/entities.dart';
+
 import 'package:wikipelis/presentation/utils/app_language/app_language.dart';
 import 'package:wikipelis/config/constants/environment.dart';
 import 'package:wikipelis/domain/datasources/movies_datasource.dart';
-import 'package:wikipelis/domain/entities/genre.dart';
-import 'package:wikipelis/domain/entities/movie.dart';
-import 'package:wikipelis/infrastructure/mappers/genre_mapper.dart';
-import 'package:wikipelis/infrastructure/mappers/movie_mapper.dart';
+
+import 'package:wikipelis/infrastructure/mappers/mappers.dart';
 import 'package:wikipelis/infrastructure/models/models.dart';
-import 'package:wikipelis/infrastructure/models/moviedb/genre_response.dart';
 
 class TheMoviedbDatasourceImpl extends MoviesDataSource {
   final dio = Dio(
@@ -106,5 +105,21 @@ class TheMoviedbDatasourceImpl extends MoviesDataSource {
         .map((genreModel) => GenreMapper.genreResponseToEntity(genreModel))
         .toList();
     return genres;
+  }
+
+  @override
+  Future<List<MovieTrailers>> getMovieTrailers(
+      {required String movieId}) async {
+    final response = await dio.get('/movie/$movieId/videos');
+    MovieTrailersModel movieTrailersModel =
+        MovieTrailersModel.fromJson(response.data);
+    List<MovieTrailers> movieTrailers = [];
+
+    for (VideoInfoModel videoInfoModel in movieTrailersModel.results) {
+      MovieTrailers movieTrailer =
+          TrailersMapper.movieTrailerResponseToEntity(videoInfoModel);
+      movieTrailers.add(movieTrailer);
+    }
+    return movieTrailers;
   }
 }

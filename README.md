@@ -27,3 +27,7 @@ Para cambiar el Splash Screen
 dart run flutter_native_splash:create
 
 ```
+Android AAB
+```
+flutter build appbundle
+```
