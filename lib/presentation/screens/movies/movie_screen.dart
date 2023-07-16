@@ -87,9 +87,9 @@ class _MovieDetails extends ConsumerWidget {
               _MovieInfo(movie: movie)
             ],
           ),
-          // MovieTrailersBox(
-          //   movieId: movie.id.toString(),
-          // ),
+          MovieTrailersBox(
+            movieId: movie.id.toString(),
+          ),
           _MovieGenres(
             movie: movie,
             genres: genres,
