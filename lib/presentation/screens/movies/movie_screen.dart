@@ -87,15 +87,16 @@ class _MovieDetails extends ConsumerWidget {
               _MovieInfo(movie: movie)
             ],
           ),
-          MovieTrailersBox(
-            movieId: movie.id.toString(),
-          ),
+          // MovieTrailersBox(
+          //   movieId: movie.id.toString(),
+          // ),
           _MovieGenres(
             movie: movie,
             genres: genres,
           ),
           _ActorsByMovie(movieId: movie.id.toString()),
-          _MoviesSimilar(movieId: movie.id.toString())
+          _MoviesSimilar(movieId: movie.id.toString()),
+          _MoviesWatchProviders(movieId: movie.id.toString()),
         ],
       ),
     );
@@ -389,6 +390,41 @@ class __MoviesSimilarState extends ConsumerState<_MoviesSimilar> {
       loadNextPage: () => ref
           .read(similarMoviesProvider.notifier)
           .loadNextPage(movieId: widget.movieId),
+    );
+  }
+}
+
+class _MoviesWatchProviders extends ConsumerWidget {
+  final String movieId;
+  const _MoviesWatchProviders({required this.movieId});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final watchProviders = ref.watch(watchProvider(movieId));
+    return watchProviders.when(
+      data: (watchProviders) => AspectRatio(
+        aspectRatio: 26 / 9,
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, index) {
+            final watchProvider = watchProviders[index];
+            return Container(
+              margin: const EdgeInsets.all(20),
+              child: Image.network(
+                watchProvider.logoPath,
+                width: 100,
+                height: 100,
+              ),
+            );
+          },
+          itemCount: watchProviders.length,
+        ),
+      ),
+      error: (error, stackTrace) => Text('Error: $error'),
+      loading: () => const Center(
+          child: CircularProgressIndicator(
+        strokeWidth: 2,
+      )),
     );
   }
 }

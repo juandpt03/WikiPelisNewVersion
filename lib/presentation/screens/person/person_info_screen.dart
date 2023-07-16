@@ -181,6 +181,7 @@ class _BodyinfoPerson extends StatelessWidget {
               height: 10,
             ),
             //Nacimiento
+
             Text(
               S.of(context).lugarDeNacimiento + person.placeOfBirth,
               style: textStyleInformation,

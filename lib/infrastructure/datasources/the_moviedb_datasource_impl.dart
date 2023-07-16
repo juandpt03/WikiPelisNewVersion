@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:wikipelis/domain/entities/entities.dart';
-import 'package:wikipelis/infrastructure/models/persondb/person_movies_model.dart';
 
 import 'package:wikipelis/presentation/utils/app_language/app_language.dart';
 import 'package:wikipelis/config/constants/environment.dart';
@@ -105,6 +104,7 @@ class TheMoviedbDatasourceImpl extends MoviesDataSource {
     List<Genre> genres = genreModel
         .map((genreModel) => GenreMapper.genreResponseToEntity(genreModel))
         .toList();
+
     return genres;
   }
 

@@ -1,13 +1,13 @@
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wikipelis/domain/datasources/shared_preferences_datasource.dart';
 
-class UserSettingsDatasourceimpl extends SharedPreferencesDatasource {
+class UserSettingsDataSourceimpl extends SharedPreferencesDataSource {
   late Future<SharedPreferences> prefs;
   Future<SharedPreferences> initPrefs() async {
     return await SharedPreferences.getInstance();
   }
 
-  UserSettingsDatasourceimpl() {
+  UserSettingsDataSourceimpl() {
     prefs = initPrefs();
   }
   @override

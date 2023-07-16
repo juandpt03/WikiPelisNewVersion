@@ -19,7 +19,7 @@ class PersonModel {
   final String? imdbId;
   final String? knownForDepartment;
   final String name;
-  final String placeOfBirth;
+  final String? placeOfBirth;
   final double? popularity;
   final String? profilePath;
 
@@ -35,7 +35,7 @@ class PersonModel {
     required this.imdbId,
     required this.knownForDepartment,
     required this.name,
-    required this.placeOfBirth,
+    this.placeOfBirth,
     required this.popularity,
     required this.profilePath,
   });

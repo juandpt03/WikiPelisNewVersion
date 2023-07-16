@@ -9,7 +9,8 @@ class PersonMapper {
         id: personModel.id,
         knownForDepartment: personModel.knownForDepartment ?? '',
         name: personModel.name,
-        placeOfBirth: personModel.placeOfBirth,
+        placeOfBirth:
+            personModel.placeOfBirth != 'null' ? personModel.placeOfBirth! : '',
         popularity: personModel.popularity ?? 0.0,
         profilePath: personModel.profilePath != ''
             ? 'https://image.tmdb.org/t/p/w500${personModel.profilePath}'

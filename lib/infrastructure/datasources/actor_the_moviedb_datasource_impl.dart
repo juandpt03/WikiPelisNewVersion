@@ -9,7 +9,7 @@ import 'package:wikipelis/domain/datasources/actors_datasource.dart';
 import 'package:wikipelis/domain/entities/actor.dart';
 import 'package:wikipelis/infrastructure/models/moviedb/credits_response.dart';
 
-class ActorTheMovieDbDatasource extends ActorsDataSource {
+class ActorTheMovieDbDataSource extends ActorsDataSource {
   final dio = Dio(BaseOptions(
     baseUrl: 'https://api.themoviedb.org/3',
     queryParameters: {
