@@ -30,5 +30,14 @@
   "selecioneSuIdioma": "Selecione su idioma",
   "espanol": "Español",
   "ingles": "Inglés",
-  "noSeEncontroNingunTrailer": "No se encontró ningún Trailer"
+  "noSeEncontroNingunTrailer": "No se encontró ningún Trailer",
+  "errorNoSeLogroCargarLosVideos": "Error, no se logró cargar los videos",
+  "peliculasSimilares": "Películas Similares",
+  "profesion": "Profesión: ",
+  "anios": " Años",
+  "cumpleanos": "Fecha de nacimiento: ",
+  "informacion": "Información: ",
+  "muerte": "Muerte: ",
+  "lugarDeNacimiento": "Lugar de nacimiento: ",
+  "filmografia": "Filmografía"
 }

@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "aceptar": MessageLookupByLibrary.simpleMessage("Ok"),
         "ajustesDeTema": MessageLookupByLibrary.simpleMessage("Theme settings"),
+        "anios": MessageLookupByLibrary.simpleMessage(" Years old"),
         "buscarPelicula":
             MessageLookupByLibrary.simpleMessage("Search for a movie"),
         "cambiarColorDeTema":
@@ -39,9 +40,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "configuracinDeIdioma":
             MessageLookupByLibrary.simpleMessage("Language settings"),
         "configuraciones": MessageLookupByLibrary.simpleMessage("Settings"),
+        "cumpleanos": MessageLookupByLibrary.simpleMessage("Birthdate: "),
         "desdeSiempre": MessageLookupByLibrary.simpleMessage("All the time"),
         "enCines": MessageLookupByLibrary.simpleMessage("At the cinema"),
         "enEsteMes": MessageLookupByLibrary.simpleMessage("In this month"),
+        "errorNoSeLogroCargarLosVideos": MessageLookupByLibrary.simpleMessage(
+            "Error, the videos could not be loaded"),
         "espanol": MessageLookupByLibrary.simpleMessage("Spanish"),
         "esperePorFavor": MessageLookupByLibrary.simpleMessage("Please wait."),
         "estoEstTardandoMsDeLoEsperado": MessageLookupByLibrary.simpleMessage(
@@ -49,16 +53,24 @@ class MessageLookup extends MessageLookupByLibrary {
         "estoSePusoExtrano":
             MessageLookupByLibrary.simpleMessage("How strange"),
         "favoritos": MessageLookupByLibrary.simpleMessage("Favorites"),
+        "filmografia": MessageLookupByLibrary.simpleMessage("Filmography"),
+        "informacion": MessageLookupByLibrary.simpleMessage("Information: "),
         "ingles": MessageLookupByLibrary.simpleMessage("English"),
         "inicio": MessageLookupByLibrary.simpleMessage("Home"),
         "llamandoAMiNovia":
             MessageLookupByLibrary.simpleMessage("Calling my girlfriend"),
+        "lugarDeNacimiento":
+            MessageLookupByLibrary.simpleMessage("Place of birth: "),
         "mejoresCalificadas": MessageLookupByLibrary.simpleMessage("Top Rated"),
         "modoLuzoscuridad":
             MessageLookupByLibrary.simpleMessage("Light/Dark mode"),
+        "muerte": MessageLookupByLibrary.simpleMessage("Death: "),
         "noSeEncontroNingunTrailer":
             MessageLookupByLibrary.simpleMessage("No Trailer found"),
+        "peliculasSimilares":
+            MessageLookupByLibrary.simpleMessage("Similar Movies"),
         "populares": MessageLookupByLibrary.simpleMessage("Popular"),
+        "profesion": MessageLookupByLibrary.simpleMessage("Profession: "),
         "proximamente": MessageLookupByLibrary.simpleMessage("Upcoming"),
         "revisaTuConexionAInternet": MessageLookupByLibrary.simpleMessage(
             "Please check your internet connection"),

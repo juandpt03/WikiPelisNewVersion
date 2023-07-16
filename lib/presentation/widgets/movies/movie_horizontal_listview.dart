@@ -8,13 +8,16 @@ class MovieHorizontalListView extends StatefulWidget {
   final String? title;
   final String? subtitle;
   final VoidCallback? loadNextPage;
+  final bool? marginHorizontal;
 
-  const MovieHorizontalListView(
-      {super.key,
-      required this.movies,
-      this.title,
-      this.subtitle,
-      this.loadNextPage});
+  const MovieHorizontalListView({
+    super.key,
+    required this.movies,
+    this.title,
+    this.subtitle,
+    this.loadNextPage,
+    this.marginHorizontal = true,
+  });
 
   @override
   State<MovieHorizontalListView> createState() =>
@@ -49,7 +52,11 @@ class _MovieHorizontalListViewState extends State<MovieHorizontalListView> {
     return Column(
       children: [
         if (widget.title != null || widget.subtitle != null)
-          _Title(subtitle: widget.subtitle, title: widget.title),
+          _Title(
+            subtitle: widget.subtitle,
+            title: widget.title,
+            marginHorizontal: widget.marginHorizontal,
+          ),
         SizedBox(
           height: size.height * 0.35,
           child: ListView.builder(
@@ -92,20 +99,27 @@ class _Slider extends StatelessWidget {
 class _Title extends StatelessWidget {
   final String? title;
   final String? subtitle;
-  const _Title({this.title, this.subtitle});
+  final bool? marginHorizontal;
+  const _Title({this.title, this.subtitle, this.marginHorizontal = true});
 
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
     final titleStyle = Theme.of(context).textTheme.titleLarge;
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      margin: marginHorizontal!
+          ? const EdgeInsets.symmetric(horizontal: 10, vertical: 10)
+          : const EdgeInsets.symmetric(
+              vertical: 10,
+            ),
       child: Row(
         children: [
           if (title != null)
             Text(
               title!,
-              style: titleStyle!.copyWith(color: colors.onBackground),
+              style: titleStyle!.copyWith(
+                color: colors.onBackground,
+              ),
             ),
           const Spacer(),
           if (subtitle != null)

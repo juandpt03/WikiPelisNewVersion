@@ -4,8 +4,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wikipelis/domain/entities/entities.dart';
+import 'package:wikipelis/generated/l10n.dart';
+import 'package:wikipelis/presentation/providers/movies/movies_similar_provider.dart';
 
 import 'package:wikipelis/presentation/providers/providers.dart';
+import 'package:wikipelis/presentation/widgets/movies/movie_horizontal_listview.dart';
 import 'package:wikipelis/presentation/widgets/movies/movie_poster_link.dart';
 import 'package:wikipelis/presentation/widgets/trailers/movie_trailers_box.dart';
 
@@ -84,12 +87,15 @@ class _MovieDetails extends ConsumerWidget {
               _MovieInfo(movie: movie)
             ],
           ),
-          MovieTrailersBox(movieId: movie.id.toString(),),
+          // MovieTrailersBox(
+          //   movieId: movie.id.toString(),
+          // ),
           _MovieGenres(
             movie: movie,
             genres: genres,
           ),
-          _ActorsByMovie(movieId: movie.id.toString())
+          _ActorsByMovie(movieId: movie.id.toString()),
+          _MoviesSimilar(movieId: movie.id.toString())
         ],
       ),
     );
@@ -129,7 +135,7 @@ class _MovieGenres extends StatelessWidget {
                 ),
               ),
             )
-            .toList()
+            .toList(),
       ],
     );
   }
@@ -156,7 +162,10 @@ class _MovieInfo extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: Text(
               movie.title,
-              style: textStyle.titleLarge!.copyWith(color: colors.onBackground),
+              style: textStyle.titleLarge!.copyWith(
+                color: colors.onBackground,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           Text(
@@ -213,57 +222,60 @@ class _ActorsByMovie extends ConsumerWidget {
         child: CircularProgressIndicator(strokeWidth: 2),
       );
     }
-    return SizedBox(
-      height: 300,
+    return AspectRatio(
+      aspectRatio: 16 / 10,
       child: ListView.builder(
         itemCount: actors.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           final actor = actors[index];
-          return Container(
-            width: 135,
-            margin: const EdgeInsets.all(8),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                actor.profilePath!.contains('https')
-                    ? FadeInRight(
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.network(
-                            actor.profilePath!,
-                            height: 180,
-                            width: 135,
-                            fit: BoxFit.cover,
+          return GestureDetector(
+            onTap: () => context.push('/home/0/actor/${actor.id}'),
+            child: Container(
+              width: 135,
+              margin: const EdgeInsets.all(8),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  actor.profilePath!.contains('https')
+                      ? FadeInRight(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Image.network(
+                              actor.profilePath!,
+                              height: 180,
+                              width: 135,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        )
+                      : FadeInRight(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Image.asset(
+                              actor.profilePath!,
+                              height: 180,
+                              width: 135,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
-                      )
-                    : FadeInRight(
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.asset(
-                            actor.profilePath!,
-                            height: 180,
-                            width: 135,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                Text(
-                  actor.name,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(color: colors.onBackground),
-                ),
-                Text(
-                  actor.character ?? '',
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    color: colors.onBackground,
-                    fontWeight: FontWeight.bold,
+                  Text(
+                    actor.name,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(color: colors.onBackground),
                   ),
-                )
-              ],
+                  Text(
+                    actor.character ?? '',
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: colors.onBackground,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )
+                ],
+              ),
             ),
           );
         },
@@ -349,4 +361,34 @@ class _CustomSliverAppBar extends ConsumerWidget {
   //     maxLines: 1,
   //   );
   // }
+}
+
+class _MoviesSimilar extends ConsumerStatefulWidget {
+  final String movieId;
+  const _MoviesSimilar({required this.movieId});
+
+  @override
+  ConsumerState<_MoviesSimilar> createState() => __MoviesSimilarState();
+}
+
+class __MoviesSimilarState extends ConsumerState<_MoviesSimilar> {
+  @override
+  void initState() {
+    super.initState();
+    ref
+        .read(similarMoviesProvider.notifier)
+        .loadNextPage(movieId: widget.movieId);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final similarMovies = ref.watch(similarMoviesProvider);
+    return MovieHorizontalListView(
+      movies: similarMovies,
+      title: S.of(context).peliculasSimilares,
+      loadNextPage: () => ref
+          .read(similarMoviesProvider.notifier)
+          .loadNextPage(movieId: widget.movieId),
+    );
+  }
 }

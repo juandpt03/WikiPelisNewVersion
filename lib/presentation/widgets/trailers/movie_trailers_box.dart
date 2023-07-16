@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wikipelis/domain/entities/entities.dart';
 import 'package:wikipelis/generated/l10n.dart';
-import 'package:wikipelis/presentation/providers/movies/trailers_movies_provider.dart';
+import 'package:wikipelis/presentation/providers/providers.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class MovieTrailersBox extends ConsumerWidget {
@@ -15,6 +15,7 @@ class MovieTrailersBox extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
+    final colors = Theme.of(context).colorScheme;
     final Size size = MediaQuery.of(context).size;
     return FutureBuilder(
       future: ref.watch(movieTrailersProvider.notifier).loadTrailers(movieId),
@@ -35,16 +36,36 @@ class MovieTrailersBox extends ConsumerWidget {
             ),
           );
         }
+        if (snapshot.hasError) {
+          return SizedBox(
+            height: size.height * 0.2,
+            child: Center(
+              child: Text(S.of(context).errorNoSeLogroCargarLosVideos),
+            ),
+          );
+        }
 
-        return SizedBox(
-          height: size.height * 0.33,
+        return AspectRatio(
+          aspectRatio: 16 / 11,
           child: Swiper(
+            loop: false,
+            pagination: snapshot.data!.length < 20
+                ? SwiperPagination(
+                    margin: const EdgeInsets.only(top: 0),
+                    builder: DotSwiperPaginationBuilder(
+                      activeColor: colors.primary,
+                      color: colors.secondary.withOpacity(0.6),
+                    ),
+                  )
+                : null,
             viewportFraction: 0.9,
             scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) => VideoPlayer(
-              videoId: snapshot.data![index].key,
-              name: snapshot.data![index].name,
-            ),
+            itemBuilder: (context, index) {
+              return VideoPlayer(
+                videoId: snapshot.data![index].key,
+                name: snapshot.data![index].name,
+              );
+            },
             itemCount: snapshot.data!.length,
           ),
         );
@@ -112,6 +133,14 @@ class _VideoPlayerState extends State<VideoPlayer> {
             borderRadius: BorderRadius.circular(20),
             child: YoutubePlayer(
               controller: _controller,
+              bottomActions: [
+                RemainingDuration(),
+                ProgressBar(
+                  isExpanded: true,
+                ),
+                RemainingDuration(),
+                const PlaybackSpeedButton(),
+              ],
             ),
           ),
         ],

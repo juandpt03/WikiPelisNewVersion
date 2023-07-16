@@ -30,5 +30,14 @@
   "selecioneSuIdioma": "Select your language",
   "espanol": "Spanish",
   "ingles": "English",
-  "noSeEncontroNingunTrailer": "No Trailer found"
+  "noSeEncontroNingunTrailer": "No Trailer found",
+  "errorNoSeLogroCargarLosVideos": "Error, the videos could not be loaded",
+  "peliculasSimilares": "Similar Movies",
+  "profesion": "Profession: ",
+  "anios": " Years old",
+  "cumpleanos": "Birthdate: ",
+  "informacion": "Information: ",
+  "muerte": "Death: ",
+  "lugarDeNacimiento": "Place of birth: ",
+  "filmografia": "Filmography"
 }

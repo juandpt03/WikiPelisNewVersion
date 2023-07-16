@@ -11,3 +11,4 @@ export 'storage/isfavorite_provider.dart';
 export 'storage/favorite_movies_provider.dart';
 export 'movies/categories_movies_providers.dart';
 export 'genres/genres_providers.dart';
+export 'movies/trailers_movies_provider.dart';

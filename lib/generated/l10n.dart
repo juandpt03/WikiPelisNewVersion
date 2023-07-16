@@ -369,6 +369,96 @@ class S {
       args: [],
     );
   }
+
+  /// `Error, the videos could not be loaded`
+  String get errorNoSeLogroCargarLosVideos {
+    return Intl.message(
+      'Error, the videos could not be loaded',
+      name: 'errorNoSeLogroCargarLosVideos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Similar Movies`
+  String get peliculasSimilares {
+    return Intl.message(
+      'Similar Movies',
+      name: 'peliculasSimilares',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profession: `
+  String get profesion {
+    return Intl.message(
+      'Profession: ',
+      name: 'profesion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ` Years old`
+  String get anios {
+    return Intl.message(
+      ' Years old',
+      name: 'anios',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Birthdate: `
+  String get cumpleanos {
+    return Intl.message(
+      'Birthdate: ',
+      name: 'cumpleanos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Information: `
+  String get informacion {
+    return Intl.message(
+      'Information: ',
+      name: 'informacion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Death: `
+  String get muerte {
+    return Intl.message(
+      'Death: ',
+      name: 'muerte',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Place of birth: `
+  String get lugarDeNacimiento {
+    return Intl.message(
+      'Place of birth: ',
+      name: 'lugarDeNacimiento',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Filmography`
+  String get filmografia {
+    return Intl.message(
+      'Filmography',
+      name: 'filmografia',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
