@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:wikipelis/domain/entities/person.dart';
 import 'package:wikipelis/infrastructure/mappers/mappers.dart';
+import 'package:wikipelis/presentation/utils/app_language/app_language.dart';
 
 import 'package:wikipelis/infrastructure/models/models.dart';
-import 'package:wikipelis/presentation/utils/app_language/app_language.dart';
 import 'package:wikipelis/config/constants/environment.dart';
 import 'package:wikipelis/domain/datasources/actors_datasource.dart';
 import 'package:wikipelis/domain/entities/actor.dart';

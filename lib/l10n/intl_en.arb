@@ -24,7 +24,7 @@
   "salir": "Close",
   "aceptar": "Ok",
   "ajustesDeTema": "Theme settings",
-  "cambiarColorDeTema": "change theme color",
+  "cambiarColorDeTema": "Change theme color",
   "modoLuzoscuridad": "Light/Dark mode",
   "configuracinDeIdioma": "Language settings",
   "selecioneSuIdioma": "Select your language",
@@ -39,5 +39,7 @@
   "informacion": "Information: ",
   "muerte": "Death: ",
   "lugarDeNacimiento": "Place of birth: ",
-  "filmografia": "Filmography"
+  "filmografia": "Filmography",
+  "disponibleEn": "Available on:",
+  "muyPronto": "Coming soon..."
 }

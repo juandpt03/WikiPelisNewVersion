@@ -5,7 +5,8 @@ import 'package:wikipelis/presentation/providers/providers.dart';
 // Peliculas Similares
 
 final similarMoviesProvider =
-    StateNotifierProvider<MoviesSimilarNotifier, List<Movie>>((ref) {
+    StateNotifierProvider.autoDispose<MoviesSimilarNotifier, List<Movie>>(
+        (ref) {
   final fetchMoreMovies = ref.watch(movieRepositoryProvider).getMoviesSimilar;
   return MoviesSimilarNotifier(fetchMoreMovies: fetchMoreMovies);
 });

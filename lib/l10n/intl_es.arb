@@ -39,5 +39,7 @@
   "informacion": "Información: ",
   "muerte": "Muerte: ",
   "lugarDeNacimiento": "Lugar de nacimiento: ",
-  "filmografia": "Filmografía"
+  "filmografia": "Filmografía",
+  "disponibleEn": "Disponible en:",
+  "muyPronto": "Muy pronto... "
 }

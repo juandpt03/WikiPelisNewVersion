@@ -17,6 +17,9 @@ class MovieTrailersBox extends ConsumerWidget {
   Widget build(BuildContext context, ref) {
     final colors = Theme.of(context).colorScheme;
     final Size size = MediaQuery.of(context).size;
+    final textStyle = Theme.of(context).textTheme.bodyLarge?.copyWith(
+          color: colors.secondary,
+        );
     return FutureBuilder(
       future: ref.watch(movieTrailersProvider.notifier).loadTrailers(movieId),
       builder: (context, AsyncSnapshot<List<MovieTrailers>> snapshot) {
@@ -32,7 +35,10 @@ class MovieTrailersBox extends ConsumerWidget {
           return SizedBox(
             height: size.height * 0.2,
             child: Center(
-              child: Text(S.of(context).noSeEncontroNingunTrailer),
+              child: Text(
+                S.of(context).noSeEncontroNingunTrailer,
+                style: textStyle,
+              ),
             ),
           );
         }
@@ -40,7 +46,10 @@ class MovieTrailersBox extends ConsumerWidget {
           return SizedBox(
             height: size.height * 0.2,
             child: Center(
-              child: Text(S.of(context).errorNoSeLogroCargarLosVideos),
+              child: Text(
+                S.of(context).errorNoSeLogroCargarLosVideos,
+                style: textStyle,
+              ),
             ),
           );
         }

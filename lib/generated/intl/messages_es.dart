@@ -45,6 +45,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cumpleanos":
             MessageLookupByLibrary.simpleMessage("Fecha de nacimiento: "),
         "desdeSiempre": MessageLookupByLibrary.simpleMessage("Desde Siempre"),
+        "disponibleEn": MessageLookupByLibrary.simpleMessage("Disponible en:"),
         "enCines": MessageLookupByLibrary.simpleMessage("En Cines"),
         "enEsteMes": MessageLookupByLibrary.simpleMessage("En este mes"),
         "errorNoSeLogroCargarLosVideos": MessageLookupByLibrary.simpleMessage(
@@ -70,6 +71,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "modoLuzoscuridad":
             MessageLookupByLibrary.simpleMessage("Modo Luz/Oscuridad"),
         "muerte": MessageLookupByLibrary.simpleMessage("Muerte: "),
+        "muyPronto": MessageLookupByLibrary.simpleMessage("Muy pronto... "),
         "noSeEncontroNingunTrailer": MessageLookupByLibrary.simpleMessage(
             "No se encontró ningún Trailer"),
         "peliculasSimilares":

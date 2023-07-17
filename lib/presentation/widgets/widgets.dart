@@ -6,3 +6,5 @@ export 'shared/full_screen_loader.dart';
 export 'categories/categorie_card.dart';
 export 'shared/custom_background_gradient.dart';
 export 'movies/movie_category_masonry.dart';
+export 'watch_providers/movies_watch_providers.dart';
+export 'trailers/movie_trailers_box.dart';

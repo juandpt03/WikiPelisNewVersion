@@ -300,10 +300,10 @@ class S {
     );
   }
 
-  /// `change theme color`
+  /// `Change theme color`
   String get cambiarColorDeTema {
     return Intl.message(
-      'change theme color',
+      'Change theme color',
       name: 'cambiarColorDeTema',
       desc: '',
       args: [],
@@ -455,6 +455,26 @@ class S {
     return Intl.message(
       'Filmography',
       name: 'filmografia',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Available on:`
+  String get disponibleEn {
+    return Intl.message(
+      'Available on:',
+      name: 'disponibleEn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Coming soon...`
+  String get muyPronto {
+    return Intl.message(
+      'Coming soon...',
+      name: 'muyPronto',
       desc: '',
       args: [],
     );

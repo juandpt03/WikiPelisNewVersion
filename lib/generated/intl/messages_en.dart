@@ -28,7 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "buscarPelicula":
             MessageLookupByLibrary.simpleMessage("Search for a movie"),
         "cambiarColorDeTema":
-            MessageLookupByLibrary.simpleMessage("change theme color"),
+            MessageLookupByLibrary.simpleMessage("Change theme color"),
         "cargando": MessageLookupByLibrary.simpleMessage("Loading..."),
         "cargandoPeliculas":
             MessageLookupByLibrary.simpleMessage("Loading Movies"),
@@ -42,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "configuraciones": MessageLookupByLibrary.simpleMessage("Settings"),
         "cumpleanos": MessageLookupByLibrary.simpleMessage("Birthdate: "),
         "desdeSiempre": MessageLookupByLibrary.simpleMessage("All the time"),
+        "disponibleEn": MessageLookupByLibrary.simpleMessage("Available on:"),
         "enCines": MessageLookupByLibrary.simpleMessage("At the cinema"),
         "enEsteMes": MessageLookupByLibrary.simpleMessage("In this month"),
         "errorNoSeLogroCargarLosVideos": MessageLookupByLibrary.simpleMessage(
@@ -65,6 +66,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "modoLuzoscuridad":
             MessageLookupByLibrary.simpleMessage("Light/Dark mode"),
         "muerte": MessageLookupByLibrary.simpleMessage("Death: "),
+        "muyPronto": MessageLookupByLibrary.simpleMessage("Coming soon..."),
         "noSeEncontroNingunTrailer":
             MessageLookupByLibrary.simpleMessage("No Trailer found"),
         "peliculasSimilares":
