@@ -2,7 +2,7 @@ import 'package:wikipelis/domain/datasources/shared_preferences_datasource.dart'
 import 'package:wikipelis/domain/repositories/shared_preferences_repository.dart';
 
 class SharedPreferencesRepositoryImpl extends SharedPreferencesRepository {
-  final SharedPreferencesDatasource datasource;
+  final SharedPreferencesDataSource datasource;
 
   SharedPreferencesRepositoryImpl(this.datasource);
 

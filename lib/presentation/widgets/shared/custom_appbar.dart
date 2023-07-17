@@ -25,6 +25,7 @@ class CustomAppBar extends ConsumerWidget {
             FaIcon(
               FontAwesomeIcons.film,
               color: colors.primary,
+              size: 20,
             ),
             const SizedBox(
               width: 5,

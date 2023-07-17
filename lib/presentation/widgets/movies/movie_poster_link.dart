@@ -1,23 +1,26 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wikipelis/config/helpers/human_formats.dart';
 import 'package:wikipelis/domain/entities/movie.dart';
+import 'package:wikipelis/presentation/providers/movies/movies_similar_provider.dart';
 
-class MoviePosterLink extends StatelessWidget {
+class MoviePosterLink extends ConsumerWidget {
   final Movie movie;
   final double height;
 
   const MoviePosterLink({super.key, required this.movie, required this.height});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final colors = Theme.of(context).colorScheme;
     final textStyle = Theme.of(context).textTheme;
     return GestureDetector(
       onTap: () {
         context.push('/home/0/movie/${movie.id}');
+        ref.invalidate(similarMoviesProvider);
       },
       child: SizedBox(
         height: height,

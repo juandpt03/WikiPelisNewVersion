@@ -1,12 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:wikipelis/domain/entities/entities.dart';
 
-import 'package:wikipelis/presentation/utils/app_language/app_language.dart';
 import 'package:wikipelis/config/constants/environment.dart';
 import 'package:wikipelis/domain/datasources/movies_datasource.dart';
 
 import 'package:wikipelis/infrastructure/mappers/mappers.dart';
 import 'package:wikipelis/infrastructure/models/models.dart';
+import 'package:wikipelis/presentation/utils/utils.dart';
 
 class TheMoviedbDatasourceImpl extends MoviesDataSource {
   final dio = Dio(
@@ -104,6 +104,7 @@ class TheMoviedbDatasourceImpl extends MoviesDataSource {
     List<Genre> genres = genreModel
         .map((genreModel) => GenreMapper.genreResponseToEntity(genreModel))
         .toList();
+
     return genres;
   }
 
@@ -121,5 +122,37 @@ class TheMoviedbDatasourceImpl extends MoviesDataSource {
       movieTrailers.add(movieTrailer);
     }
     return movieTrailers;
+  }
+
+  @override
+  Future<List<Movie>> getMoviesSimilar(
+      {required String movieId, int page = 1}) async {
+    final response = await dio.get('/movie/$movieId/similar', queryParameters: {
+      'page': page,
+    });
+    if (response.statusCode != 200) {
+      return throw Exception('Movie With id: $movieId  not found');
+    }
+    return _jsonToMovies(response.data);
+  }
+
+  @override
+  Future<List<Movie>> getMoviesByPersonId({
+    required String personId,
+  }) async {
+    final jsonResponse = await dio.get(
+      '/person/$personId/movie_credits',
+    );
+    final moviedbResponse = PersonMoviesModel.fromJson(jsonResponse.data);
+    final List<Movie> movies = moviedbResponse.cast
+        .where((personMoviesTheMoviedb) =>
+            personMoviesTheMoviedb.posterPath != '' &&
+            personMoviesTheMoviedb.backdropPath != '')
+        .map(
+          (personMovieTheMoviedb) =>
+              MovieMapper.thePersonMovieToEntity(personMovieTheMoviedb),
+        )
+        .toList();
+    return movies;
   }
 }

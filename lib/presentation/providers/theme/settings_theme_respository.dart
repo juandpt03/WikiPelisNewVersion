@@ -3,4 +3,4 @@ import 'package:wikipelis/infrastructure/datasources/user_settings_datasource_im
 import 'package:wikipelis/infrastructure/repositorie/shared_preferences_repository.dart';
 
 final settingsThemeRepositoryProvider = Provider(
-    (ref) => SharedPreferencesRepositoryImpl(UserSettingsDatasourceimpl()));
+    (ref) => SharedPreferencesRepositoryImpl(UserSettingsDataSourceimpl()));

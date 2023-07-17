@@ -300,10 +300,10 @@ class S {
     );
   }
 
-  /// `change theme color`
+  /// `Change theme color`
   String get cambiarColorDeTema {
     return Intl.message(
-      'change theme color',
+      'Change theme color',
       name: 'cambiarColorDeTema',
       desc: '',
       args: [],
@@ -365,6 +365,116 @@ class S {
     return Intl.message(
       'No Trailer found',
       name: 'noSeEncontroNingunTrailer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error, the videos could not be loaded`
+  String get errorNoSeLogroCargarLosVideos {
+    return Intl.message(
+      'Error, the videos could not be loaded',
+      name: 'errorNoSeLogroCargarLosVideos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Similar Movies`
+  String get peliculasSimilares {
+    return Intl.message(
+      'Similar Movies',
+      name: 'peliculasSimilares',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profession: `
+  String get profesion {
+    return Intl.message(
+      'Profession: ',
+      name: 'profesion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ` Years old`
+  String get anios {
+    return Intl.message(
+      ' Years old',
+      name: 'anios',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Birthdate: `
+  String get cumpleanos {
+    return Intl.message(
+      'Birthdate: ',
+      name: 'cumpleanos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Information: `
+  String get informacion {
+    return Intl.message(
+      'Information: ',
+      name: 'informacion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Death: `
+  String get muerte {
+    return Intl.message(
+      'Death: ',
+      name: 'muerte',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Place of birth: `
+  String get lugarDeNacimiento {
+    return Intl.message(
+      'Place of birth: ',
+      name: 'lugarDeNacimiento',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Filmography`
+  String get filmografia {
+    return Intl.message(
+      'Filmography',
+      name: 'filmografia',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Available on:`
+  String get disponibleEn {
+    return Intl.message(
+      'Available on:',
+      name: 'disponibleEn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Coming soon...`
+  String get muyPronto {
+    return Intl.message(
+      'Coming soon...',
+      name: 'muyPronto',
       desc: '',
       args: [],
     );

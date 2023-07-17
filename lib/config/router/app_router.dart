@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:wikipelis/presentation/screens/person/person_info_screen.dart';
 import 'package:wikipelis/presentation/screens/screens.dart';
 import 'package:wikipelis/presentation/widgets/movies/movie_category_masonry.dart';
 
@@ -33,6 +34,15 @@ final appRouter = GoRouter(
             final categoryId = state.pathParameters['category'] ?? '';
 
             return MovieCategoryMasonry(genreId: categoryId);
+          },
+        ),
+        GoRoute(
+          path: 'actor/:personId',
+          name: PersonInfoScreen.route,
+          builder: (context, state) {
+            final personId = state.pathParameters['personId'] ?? '';
+
+            return PersonInfoScreen(personId: personId);
           },
         ),
       ],

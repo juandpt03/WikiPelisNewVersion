@@ -1,0 +1,135 @@
+import 'package:wikipelis/infrastructure/models/models.dart';
+import 'package:wikipelis/presentation/utils/utils.dart';
+
+class WatchProviderByCountry {
+  static List<Flatrate>? getListByCountry(
+      WatchProvidersModelResponse watchProviderModel) {
+    String local =
+        AppLanguage.getLocale().toString().substring(3, 5).toLowerCase();
+
+    switch (local) {
+      case 'ag':
+        return watchProviderModel.results.ag?.flatrate;
+      case 'ar':
+        return watchProviderModel.results.ar?.flatrate;
+      case 'at':
+        return watchProviderModel.results.at?.flatrate;
+      case 'au':
+        return watchProviderModel.results.au?.flatrate;
+      case 'ba':
+        return watchProviderModel.results.ba?.flatrate;
+      case 'bb':
+        return watchProviderModel.results.bb?.flatrate;
+      case 'be':
+        return watchProviderModel.results.be?.flatrate;
+      case 'bg':
+        return watchProviderModel.results.bg?.flatrate;
+      case 'bm':
+        return watchProviderModel.results.bm?.flatrate;
+      case 'bo':
+        return watchProviderModel.results.bo?.flatrate;
+      case 'br':
+        return watchProviderModel.results.br?.flatrate;
+      case 'bs':
+        return watchProviderModel.results.bs?.flatrate;
+      case 'ca':
+        return watchProviderModel.results.ca?.flatrate;
+      case 'ch':
+        return watchProviderModel.results.ch?.flatrate;
+      case 'cl':
+        return watchProviderModel.results.cl?.flatrate;
+      case 'co':
+        return watchProviderModel.results.co?.flatrate;
+      case 'cr':
+        return watchProviderModel.results.cr?.flatrate;
+      case 'cz':
+        return watchProviderModel.results.cz?.flatrate;
+      case 'de':
+        return watchProviderModel.results.de?.flatrate;
+      case 'dk':
+        return watchProviderModel.results.dk?.flatrate;
+      case 'ec':
+        return watchProviderModel.results.ec?.flatrate;
+      case 'es':
+        return watchProviderModel.results.es?.flatrate;
+      case 'fi':
+        return watchProviderModel.results.fi?.flatrate;
+      case 'fr':
+        return watchProviderModel.results.fr?.flatrate;
+      case 'gb':
+        return watchProviderModel.results.gb?.flatrate;
+      case 'gf':
+        return watchProviderModel.results.gf?.flatrate;
+      case 'gt':
+        return watchProviderModel.results.gt?.flatrate;
+      case 'hk':
+        return watchProviderModel.results.hk?.flatrate;
+      case 'hn':
+        return watchProviderModel.results.hn?.flatrate;
+      case 'hr':
+        return watchProviderModel.results.hr?.flatrate;
+      case 'hu':
+        return watchProviderModel.results.hu?.flatrate;
+      case 'ie':
+        return watchProviderModel.results.ie?.flatrate;
+      case 'il':
+        return watchProviderModel.results.il?.flatrate;
+      case 'it':
+        return watchProviderModel.results.it?.flatrate;
+      case 'jm':
+        return watchProviderModel.results.jm?.flatrate;
+      case 'lc':
+        return watchProviderModel.results.lc?.flatrate;
+      case 'md':
+        return watchProviderModel.results.md?.flatrate;
+      case 'me':
+        return watchProviderModel.results.me?.flatrate;
+      case 'mk':
+        return watchProviderModel.results.mk?.flatrate;
+      case 'mx':
+        return watchProviderModel.results.mx?.flatrate;
+      case 'ni':
+        return watchProviderModel.results.ni?.flatrate;
+      case 'nl':
+        return watchProviderModel.results.nl?.flatrate;
+      case 'no':
+        return watchProviderModel.results.no?.flatrate;
+      case 'nz':
+        return watchProviderModel.results.nz?.flatrate;
+      case 'pa':
+        return watchProviderModel.results.pa?.flatrate;
+      case 'pe':
+        return watchProviderModel.results.pe?.flatrate;
+      case 'pl':
+        return watchProviderModel.results.pl?.flatrate;
+      case 'py':
+        return watchProviderModel.results.py?.flatrate;
+      case 'ro':
+        return watchProviderModel.results.ro?.flatrate;
+      case 'rs':
+        return watchProviderModel.results.rs?.flatrate;
+      case 'ru':
+        return watchProviderModel.results.ru?.flatrate;
+      case 'se':
+        return watchProviderModel.results.se?.flatrate;
+      case 'si':
+        return watchProviderModel.results.si?.flatrate;
+      case 'sk':
+        return watchProviderModel.results.sk?.flatrate;
+      case 'sv':
+        return watchProviderModel.results.sv?.flatrate;
+      case 'tc':
+        return watchProviderModel.results.tc?.flatrate;
+      case 'tt':
+        return watchProviderModel.results.tt?.flatrate;
+      case 'tw':
+        return watchProviderModel.results.tw?.flatrate;
+      case 'uy':
+        return watchProviderModel.results.uy?.flatrate;
+      case 've':
+        return watchProviderModel.results.ve?.flatrate;
+      default:
+        return watchProviderModel.results.us?.flatrate;
+    }
+  }
+}
