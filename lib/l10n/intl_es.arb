@@ -41,5 +41,10 @@
   "lugarDeNacimiento": "Lugar de nacimiento: ",
   "filmografia": "Filmografía",
   "disponibleEn": "Disponible en:",
-  "muyPronto": "Muy pronto... "
+  "muyPronto": "Muy pronto... ",
+  "subscripcionRecomendada": "Subscripción recomendada",
+  "subscripcionIdeal": "Subscripción ideal",
+  "noTienesPeliculasFavoritas": "No tienes películas favoritas",
+  "comienzaAExplorar": "Comienza a explorar",
+  "ohhhNoEstasPeliculasNoEstanDisponiblesEnNingunaPlataforma": "¡Ohhh, no! Estas películas no están disponibles en ninguna plataforma. Por favor, agrega más películas."
 }

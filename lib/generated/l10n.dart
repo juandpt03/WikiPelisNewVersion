@@ -479,6 +479,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Recommended subscription`
+  String get subscripcionRecomendada {
+    return Intl.message(
+      'Recommended subscription',
+      name: 'subscripcionRecomendada',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ideal streaming platform`
+  String get subscripcionIdeal {
+    return Intl.message(
+      'Ideal streaming platform',
+      name: 'subscripcionIdeal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You don't have any favorite movies.`
+  String get noTienesPeliculasFavoritas {
+    return Intl.message(
+      'You don\'t have any favorite movies.',
+      name: 'noTienesPeliculasFavoritas',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start exploring`
+  String get comienzaAExplorar {
+    return Intl.message(
+      'Start exploring',
+      name: 'comienzaAExplorar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Oh no! These movies are not available on any platform. Please add more movies.`
+  String get ohhhNoEstasPeliculasNoEstanDisponiblesEnNingunaPlataforma {
+    return Intl.message(
+      'Oh no! These movies are not available on any platform. Please add more movies.',
+      name: 'ohhhNoEstasPeliculasNoEstanDisponiblesEnNingunaPlataforma',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

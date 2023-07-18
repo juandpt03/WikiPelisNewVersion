@@ -35,6 +35,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "cargandoPopulares":
             MessageLookupByLibrary.simpleMessage("Loading popular ones"),
         "categorias": MessageLookupByLibrary.simpleMessage("Categories"),
+        "comienzaAExplorar":
+            MessageLookupByLibrary.simpleMessage("Start exploring"),
         "comprandoPalomitas":
             MessageLookupByLibrary.simpleMessage("Buying Popcorn"),
         "configuracinDeIdioma":
@@ -69,6 +71,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "muyPronto": MessageLookupByLibrary.simpleMessage("Coming soon..."),
         "noSeEncontroNingunTrailer":
             MessageLookupByLibrary.simpleMessage("No Trailer found"),
+        "noTienesPeliculasFavoritas": MessageLookupByLibrary.simpleMessage(
+            "You don\'t have any favorite movies."),
+        "ohhhNoEstasPeliculasNoEstanDisponiblesEnNingunaPlataforma":
+            MessageLookupByLibrary.simpleMessage(
+                "Oh no! These movies are not available on any platform. Please add more movies."),
         "peliculasSimilares":
             MessageLookupByLibrary.simpleMessage("Similar Movies"),
         "populares": MessageLookupByLibrary.simpleMessage("Popular"),
@@ -81,6 +88,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Select your favorite color"),
         "selecioneSuIdioma":
             MessageLookupByLibrary.simpleMessage("Select your language"),
+        "subscripcionIdeal":
+            MessageLookupByLibrary.simpleMessage("Ideal streaming platform"),
+        "subscripcionRecomendada":
+            MessageLookupByLibrary.simpleMessage("Recommended subscription"),
         "yaMeroooo": MessageLookupByLibrary.simpleMessage("Yamerooo!")
       };
 }
