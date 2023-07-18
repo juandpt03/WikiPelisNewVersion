@@ -106,28 +106,42 @@ class _WatchProvidersImages extends StatelessWidget {
             itemCount: watchProviders.length,
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Row(
-            children: [
-              Text(
-                'Powered by',
-                style: textStyleInformation?.copyWith(fontSize: 12),
-              ),
-              const SizedBox(
-                width: 5,
-              ),
-              SvgPicture.network(
-                colorFilter: ColorFilter.mode(
-                  Colors.yellow[700]!,
-                  BlendMode.srcIn,
-                ),
-                'https://widget.justwatch.com/assets/JW_logo_color_10px.svg',
-              ),
-            ],
-          ),
-        )
+        PoweredByJustWatchCredits(textStyleInformation: textStyleInformation)
       ],
+    );
+  }
+}
+
+class PoweredByJustWatchCredits extends StatelessWidget {
+  const PoweredByJustWatchCredits({
+    super.key,
+    required this.textStyleInformation,
+  });
+
+  final TextStyle? textStyleInformation;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: Row(
+        children: [
+          Text(
+            'Powered by',
+            style: textStyleInformation?.copyWith(fontSize: 12),
+          ),
+          const SizedBox(
+            width: 5,
+          ),
+          SvgPicture.network(
+            colorFilter: ColorFilter.mode(
+              Colors.yellow[700]!,
+              BlendMode.srcIn,
+            ),
+            'https://widget.justwatch.com/assets/JW_logo_color_10px.svg',
+          ),
+        ],
+      ),
     );
   }
 }

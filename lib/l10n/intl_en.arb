@@ -41,5 +41,10 @@
   "lugarDeNacimiento": "Place of birth: ",
   "filmografia": "Filmography",
   "disponibleEn": "Available on:",
-  "muyPronto": "Coming soon..."
+  "muyPronto": "Coming soon...",
+  "subscripcionRecomendada": "Recommended subscription",
+  "subscripcionIdeal": "Ideal streaming platform",
+  "noTienesPeliculasFavoritas": "You don't have any favorite movies.",
+  "comienzaAExplorar": "Start exploring",
+  "ohhhNoEstasPeliculasNoEstanDisponiblesEnNingunaPlataforma": "Oh no! These movies are not available on any platform. Please add more movies."
 }
