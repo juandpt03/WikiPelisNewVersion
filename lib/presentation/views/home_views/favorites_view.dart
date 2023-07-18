@@ -5,7 +5,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wikipelis/generated/l10n.dart';
 import 'package:wikipelis/presentation/providers/providers.dart';
-import 'package:wikipelis/presentation/providers/recommendation_watch_provider/ideal_suscription_provider.dart';
 import 'package:wikipelis/presentation/widgets/movies/movie_favorites_masonry.dart';
 
 class FavoritesView extends ConsumerStatefulWidget {
