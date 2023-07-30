@@ -59,6 +59,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Esto está tardando más de lo esperado"),
         "estoSePusoExtrano":
             MessageLookupByLibrary.simpleMessage("Esto se puso extraño"),
+        "estreno": MessageLookupByLibrary.simpleMessage("Estreno: "),
         "favoritos": MessageLookupByLibrary.simpleMessage("Favoritos"),
         "filmografia": MessageLookupByLibrary.simpleMessage("Filmografía"),
         "informacion": MessageLookupByLibrary.simpleMessage("Información: "),

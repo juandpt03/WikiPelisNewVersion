@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
+import 'package:wikipelis/config/helpers/helpers.dart';
 import 'package:wikipelis/domain/entities/entities.dart';
 import 'package:wikipelis/generated/l10n.dart';
 import 'package:wikipelis/presentation/providers/movies/movies_similar_provider.dart';
@@ -171,7 +172,20 @@ class _MovieInfo extends StatelessWidget {
           Text(
             movie.overview,
             textAlign: TextAlign.justify,
-            style: textStyle.bodyLarge!.copyWith(color: colors.onBackground),
+            style: textStyle.bodyMedium!.copyWith(color: colors.onBackground),
+          ),
+          const SizedBox(
+            height: 5,
+          ),
+          Text(
+            S.of(context).estreno +
+                HumanFormats.shortDate(
+                  movie.releaseDate,
+                ),
+            style: textStyle.bodyMedium!.copyWith(
+              color: colors.onBackground,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ],
       ),
@@ -191,18 +205,16 @@ class _MoviePoster extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-      child: Column(
-        children: [
-          SizedBox(
-            width: size.width * 0.3,
-            child: IgnorePointer(
-                child: MoviePosterLink(
-              movie: movie,
-              height: 250,
-            )),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      child: SizedBox(
+        height: size.height * 0.28,
+        width: size.width * 0.3,
+        child: IgnorePointer(
+          child: MoviePosterLink(
+            movie: movie,
+            height: size.height * 0.33,
           ),
-        ],
+        ),
       ),
     );
   }
@@ -317,7 +329,8 @@ class _CustomSliverAppBar extends ConsumerWidget {
                 : const FaIcon(FontAwesomeIcons.heart),
             error: (error, stackTrace) =>
                 throw UnimplementedError(error.toString()),
-            loading: () => const CircularProgressIndicator(strokeWidth: 2),
+            loading: () =>
+                const Center(child: CircularProgressIndicator(strokeWidth: 2)),
           ),
         )
       ],

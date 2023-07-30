@@ -529,6 +529,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Released: `
+  String get estreno {
+    return Intl.message(
+      'Released: ',
+      name: 'estreno',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

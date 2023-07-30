@@ -88,10 +88,10 @@ class FavoritesViewState extends ConsumerState<FavoritesView> {
   void openDialogIdealSuscription(BuildContext context) {
     final idealWatchProvider = ref.watch(idealSuscriptionProvider);
     final colors = Theme.of(context).colorScheme;
-    final textStyleInformation =
-        Theme.of(context).textTheme.bodyLarge?.copyWith(
-              color: colors.secondary,
-            );
+    final textStyleInformation = Theme.of(context)
+        .textTheme
+        .bodyLarge
+        ?.copyWith(color: colors.secondary, fontWeight: FontWeight.bold);
     final textStyleTitle = Theme.of(context).textTheme.titleLarge?.copyWith(
         fontWeight: FontWeight.bold, color: colors.onBackground, fontSize: 21);
     final Size size = MediaQuery.of(context).size;
