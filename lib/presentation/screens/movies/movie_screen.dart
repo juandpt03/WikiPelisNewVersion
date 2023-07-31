@@ -87,9 +87,7 @@ class _MovieDetails extends ConsumerWidget {
               _MovieInfo(movie: movie)
             ],
           ),
-          MovieTrailersBox(
-            movieId: movie.id.toString(),
-          ),
+          _TrailersButton(movie: movie),
           _MovieGenres(
             movie: movie,
             genres: genres,
@@ -98,6 +96,28 @@ class _MovieDetails extends ConsumerWidget {
           MoviesWatchProviders(movieId: movie.id.toString()),
           _MoviesSimilar(movieId: movie.id.toString()),
         ],
+      ),
+    );
+  }
+}
+
+class _TrailersButton extends StatelessWidget {
+  const _TrailersButton({
+    required this.movie,
+  });
+
+  final Movie movie;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(20),
+      child: ElevatedButton.icon(
+        onPressed: () {
+          context.push('/home/0/videos/${movie.id.toString()}');
+        },
+        icon: const FaIcon(FontAwesomeIcons.youtube),
+        label: Text(S.of(context).verTrailers),
       ),
     );
   }

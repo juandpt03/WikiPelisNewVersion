@@ -47,5 +47,7 @@
   "noTienesPeliculasFavoritas": "You don't have any favorite movies.",
   "comienzaAExplorar": "Start exploring",
   "ohhhNoEstasPeliculasNoEstanDisponiblesEnNingunaPlataforma": "Oh no! These movies are not available on any platform. Please add more movies.",
-  "estreno": "Released: "
+  "estreno": "Released: ",
+  "listaDeVideos": "Videos feed",
+  "verTrailers": "Watch Trailers"
 }

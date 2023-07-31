@@ -1,4 +1,3 @@
-import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wikipelis/domain/entities/entities.dart';
@@ -54,29 +53,17 @@ class MovieTrailersBox extends ConsumerWidget {
           );
         }
 
-        return AspectRatio(
-          aspectRatio: 16 / 11,
-          child: Swiper(
-            loop: false,
-            pagination: snapshot.data!.length < 20
-                ? SwiperPagination(
-                    margin: const EdgeInsets.only(top: 0),
-                    builder: DotSwiperPaginationBuilder(
-                      activeColor: colors.primary,
-                      color: colors.secondary.withOpacity(0.6),
-                    ),
-                  )
-                : null,
-            viewportFraction: 0.9,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) {
-              return VideoPlayer(
-                videoId: snapshot.data![index].key,
-                name: snapshot.data![index].name,
-              );
-            },
-            itemCount: snapshot.data!.length,
-          ),
+        return ListView.builder(
+          physics: const ClampingScrollPhysics(),
+          // shrinkWrap: true,
+          scrollDirection: Axis.vertical,
+          itemBuilder: (context, index) {
+            return VideoPlayer(
+              videoId: snapshot.data![index].key,
+              name: snapshot.data![index].name,
+            );
+          },
+          itemCount: snapshot.data!.length,
         );
       },
     );
@@ -114,8 +101,16 @@ class _VideoPlayerState extends State<VideoPlayer> {
   }
 
   @override
+  void deactivate() {
+    // Pauses video while navigating to next page.
+    _controller.pause();
+    super.deactivate();
+  }
+
+  @override
   void dispose() {
     _controller.dispose();
+
     super.dispose();
   }
 
@@ -124,35 +119,50 @@ class _VideoPlayerState extends State<VideoPlayer> {
     final textStyle = Theme.of(context).textTheme;
     final colors = Theme.of(context).colorScheme;
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            widget.name,
-            style: textStyle.titleMedium?.copyWith(
-              overflow: TextOverflow.ellipsis,
-              color: colors.onBackground,
-            ),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+      child: Card(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomRight: Radius.circular(20),
+            bottomLeft: Radius.circular(20),
           ),
-          const SizedBox(
-            height: 10,
-          ),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: YoutubePlayer(
-              controller: _controller,
-              bottomActions: [
-                RemainingDuration(),
-                ProgressBar(
-                  isExpanded: true,
+        ),
+        color: colors.onInverseSurface,
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 10,
+                horizontal: 10,
+              ),
+              child: Text(
+                widget.name,
+                style: textStyle.titleMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  overflow: TextOverflow.ellipsis,
+                  color: colors.onBackground,
                 ),
-                RemainingDuration(),
-                const PlaybackSpeedButton(),
-              ],
+              ),
             ),
-          ),
-        ],
+            ClipRRect(
+              borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(20),
+                bottomRight: Radius.circular(20),
+              ),
+              child: YoutubePlayer(
+                controller: _controller,
+                bottomActions: [
+                  RemainingDuration(),
+                  ProgressBar(
+                    isExpanded: true,
+                  ),
+                  RemainingDuration(),
+                  const PlaybackSpeedButton(),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

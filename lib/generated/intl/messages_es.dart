@@ -65,6 +65,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "informacion": MessageLookupByLibrary.simpleMessage("Información: "),
         "ingles": MessageLookupByLibrary.simpleMessage("Inglés"),
         "inicio": MessageLookupByLibrary.simpleMessage("Inicio"),
+        "listaDeVideos":
+            MessageLookupByLibrary.simpleMessage("Lista de videos"),
         "llamandoAMiNovia":
             MessageLookupByLibrary.simpleMessage("Llamando a mi novia"),
         "lugarDeNacimiento":
@@ -98,6 +100,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Subscripción ideal"),
         "subscripcionRecomendada":
             MessageLookupByLibrary.simpleMessage("Subscripción recomendada"),
+        "verTrailers": MessageLookupByLibrary.simpleMessage("Ver Trailers"),
         "yaMeroooo": MessageLookupByLibrary.simpleMessage("Ya meroooo")
       };
 }

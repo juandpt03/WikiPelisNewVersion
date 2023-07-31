@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wikipelis/presentation/screens/person/person_info_screen.dart';
 import 'package:wikipelis/presentation/screens/screens.dart';
@@ -24,6 +25,18 @@ final appRouter = GoRouter(
             final movieId = state.pathParameters['id'] ?? 'no-id';
             return MovieScreen(
               movieId: movieId,
+            );
+          },
+        ),
+        GoRoute(
+          path: 'videos/:movieId',
+          name: VideosScreen.route,
+          pageBuilder: (context, state) {
+            final movieId = state.pathParameters['movieId'] ?? '';
+            return CupertinoPage(
+              child: VideosScreen(
+                movieId: movieId,
+              ),
             );
           },
         ),
