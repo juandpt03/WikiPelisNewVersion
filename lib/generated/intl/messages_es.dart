@@ -59,11 +59,14 @@ class MessageLookup extends MessageLookupByLibrary {
             "Esto está tardando más de lo esperado"),
         "estoSePusoExtrano":
             MessageLookupByLibrary.simpleMessage("Esto se puso extraño"),
+        "estreno": MessageLookupByLibrary.simpleMessage("Estreno: "),
         "favoritos": MessageLookupByLibrary.simpleMessage("Favoritos"),
         "filmografia": MessageLookupByLibrary.simpleMessage("Filmografía"),
         "informacion": MessageLookupByLibrary.simpleMessage("Información: "),
         "ingles": MessageLookupByLibrary.simpleMessage("Inglés"),
         "inicio": MessageLookupByLibrary.simpleMessage("Inicio"),
+        "listaDeVideos":
+            MessageLookupByLibrary.simpleMessage("Lista de videos"),
         "llamandoAMiNovia":
             MessageLookupByLibrary.simpleMessage("Llamando a mi novia"),
         "lugarDeNacimiento":
@@ -97,6 +100,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Subscripción ideal"),
         "subscripcionRecomendada":
             MessageLookupByLibrary.simpleMessage("Subscripción recomendada"),
+        "verTrailers": MessageLookupByLibrary.simpleMessage("Ver Trailers"),
         "yaMeroooo": MessageLookupByLibrary.simpleMessage("Ya meroooo")
       };
 }

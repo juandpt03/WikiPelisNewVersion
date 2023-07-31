@@ -46,5 +46,8 @@
   "subscripcionIdeal": "Ideal streaming platform",
   "noTienesPeliculasFavoritas": "You don't have any favorite movies.",
   "comienzaAExplorar": "Start exploring",
-  "ohhhNoEstasPeliculasNoEstanDisponiblesEnNingunaPlataforma": "Oh no! These movies are not available on any platform. Please add more movies."
+  "ohhhNoEstasPeliculasNoEstanDisponiblesEnNingunaPlataforma": "Oh no! These movies are not available on any platform. Please add more movies.",
+  "estreno": "Released: ",
+  "listaDeVideos": "Videos feed",
+  "verTrailers": "Watch Trailers"
 }

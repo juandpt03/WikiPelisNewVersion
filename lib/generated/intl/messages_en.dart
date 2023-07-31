@@ -55,11 +55,13 @@ class MessageLookup extends MessageLookupByLibrary {
             "This is taking longer than expected."),
         "estoSePusoExtrano":
             MessageLookupByLibrary.simpleMessage("How strange"),
+        "estreno": MessageLookupByLibrary.simpleMessage("Released: "),
         "favoritos": MessageLookupByLibrary.simpleMessage("Favorites"),
         "filmografia": MessageLookupByLibrary.simpleMessage("Filmography"),
         "informacion": MessageLookupByLibrary.simpleMessage("Information: "),
         "ingles": MessageLookupByLibrary.simpleMessage("English"),
         "inicio": MessageLookupByLibrary.simpleMessage("Home"),
+        "listaDeVideos": MessageLookupByLibrary.simpleMessage("Videos feed"),
         "llamandoAMiNovia":
             MessageLookupByLibrary.simpleMessage("Calling my girlfriend"),
         "lugarDeNacimiento":
@@ -92,6 +94,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ideal streaming platform"),
         "subscripcionRecomendada":
             MessageLookupByLibrary.simpleMessage("Recommended subscription"),
+        "verTrailers": MessageLookupByLibrary.simpleMessage("Watch Trailers"),
         "yaMeroooo": MessageLookupByLibrary.simpleMessage("Yamerooo!")
       };
 }

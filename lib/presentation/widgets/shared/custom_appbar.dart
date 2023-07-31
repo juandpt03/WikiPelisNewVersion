@@ -22,6 +22,7 @@ class CustomAppBar extends ConsumerWidget {
         ),
         child: Row(
           children: [
+            const SizedBox(width: 20),
             FaIcon(
               FontAwesomeIcons.film,
               color: colors.primary,
@@ -57,10 +58,8 @@ class CustomAppBar extends ConsumerWidget {
                     }
                   });
                 },
-                icon: FaIcon(
-                  FontAwesomeIcons.magnifyingGlass,
-                  color: colors.primary,
-                ))
+                icon: FaIcon(FontAwesomeIcons.magnifyingGlass,
+                    color: colors.primary, size: 20))
           ],
         ),
       ),

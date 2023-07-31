@@ -529,6 +529,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Released: `
+  String get estreno {
+    return Intl.message(
+      'Released: ',
+      name: 'estreno',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Videos feed`
+  String get listaDeVideos {
+    return Intl.message(
+      'Videos feed',
+      name: 'listaDeVideos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Watch Trailers`
+  String get verTrailers {
+    return Intl.message(
+      'Watch Trailers',
+      name: 'verTrailers',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

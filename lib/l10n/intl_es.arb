@@ -46,5 +46,8 @@
   "subscripcionIdeal": "Subscripción ideal",
   "noTienesPeliculasFavoritas": "No tienes películas favoritas",
   "comienzaAExplorar": "Comienza a explorar",
-  "ohhhNoEstasPeliculasNoEstanDisponiblesEnNingunaPlataforma": "¡Ohhh, no! Estas películas no están disponibles en ninguna plataforma. Por favor, agrega más películas."
+  "ohhhNoEstasPeliculasNoEstanDisponiblesEnNingunaPlataforma": "¡Ohhh, no! Estas películas no están disponibles en ninguna plataforma. Por favor, agrega más películas.",
+  "estreno": "Estreno: ",
+  "listaDeVideos": "Lista de videos",
+  "verTrailers": "Ver Trailers"
 }

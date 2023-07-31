@@ -14,7 +14,7 @@ class MovieSlidesShow extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
     return SizedBox(
       width: double.infinity,
-      height: size.height * 0.3,
+      height: size.height * 0.28,
       child: Swiper(
         pagination: SwiperPagination(
           margin: const EdgeInsets.only(top: 0),
@@ -23,7 +23,7 @@ class MovieSlidesShow extends StatelessWidget {
             color: colors.secondary.withOpacity(0.6),
           ),
         ),
-        viewportFraction: 0.8,
+        viewportFraction: 0.85,
         autoplay: true,
         itemCount: movies.length,
         itemBuilder: (context, index) => _Slide(movie: movies[index]),
