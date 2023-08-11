@@ -16,14 +16,18 @@ class CategorieCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FadeInUp(
-      child: Card(
-        margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-        child: Stack(
-          children: [
-            _ImageCategory(movie: movie),
-            const _BackgroundCategory(),
-            _TextCategory(genre: genre),
-          ],
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              _ImageCategory(movie: movie),
+              const _BackgroundCategory(),
+              _TextCategory(genre: genre),
+            ],
+          ),
         ),
       ),
     );
@@ -58,17 +62,14 @@ class _BackgroundCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(15),
-      child: const SizedBox(
-        height: 200,
-        width: double.infinity,
-        child: CustomBackgroundGradient(
-          colors: [Colors.black87, Colors.transparent],
-          begin: Alignment.bottomCenter,
-          end: Alignment.topCenter,
-          stops: [0.0, 0.8],
-        ),
+    return const SizedBox(
+      height: 200,
+      width: double.infinity,
+      child: CustomBackgroundGradient(
+        colors: [Colors.black87, Colors.transparent],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        stops: [0.0, 0.8],
       ),
     );
   }
@@ -83,22 +84,20 @@ class _ImageCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(15),
-      child: Image.network(
-        movie.backdropPath,
-        height: 200,
-        width: double.infinity,
-        loadingBuilder: (context, child, loadingProgress) {
-          if (loadingProgress != null) {
-            return const SizedBox(
-                height: 200,
-                width: double.infinity,
-                child: Center(child: CircularProgressIndicator()));
-          }
-          return child;
-        },
-      ),
+    return Image.network(
+      movie.backdropPath,
+      fit: BoxFit.cover,
+      height: 200,
+      width: double.infinity,
+      loadingBuilder: (context, child, loadingProgress) {
+        if (loadingProgress != null) {
+          return const SizedBox(
+              height: 200,
+              width: double.infinity,
+              child: Center(child: CircularProgressIndicator()));
+        }
+        return child;
+      },
     );
   }
 }
