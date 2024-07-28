@@ -29,7 +29,7 @@ class SettingsView extends ConsumerWidget {
         title: Text(
           S.of(context).configuraciones,
           style: textStyle.headlineMedium!.copyWith(
-            color: colors.onBackground,
+            color: colors.onSurface,
           ),
         ),
       ),

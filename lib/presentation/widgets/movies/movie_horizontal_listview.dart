@@ -118,17 +118,17 @@ class _Title extends StatelessWidget {
             Text(
               title!,
               style: titleStyle!.copyWith(
-                color: colors.onBackground,
+                color: colors.onSurface,
               ),
             ),
           const Spacer(),
           if (subtitle != null)
             FilledButton.tonal(
               style: ButtonStyle(
-                backgroundColor: MaterialStatePropertyAll(colors.primary),
+                backgroundColor: WidgetStatePropertyAll(colors.primary),
                 visualDensity: VisualDensity.compact,
-                elevation: const MaterialStatePropertyAll(20),
-                surfaceTintColor: MaterialStatePropertyAll(colors.secondary),
+                elevation: const WidgetStatePropertyAll(20),
+                surfaceTintColor: WidgetStatePropertyAll(colors.secondary),
               ),
               onPressed: null,
               child: Text(

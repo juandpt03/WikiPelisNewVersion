@@ -140,7 +140,7 @@ class _VideoPlayerState extends State<VideoPlayer> {
                 style: textStyle.titleMedium?.copyWith(
                   fontWeight: FontWeight.bold,
                   overflow: TextOverflow.ellipsis,
-                  color: colors.onBackground,
+                  color: colors.onSurface,
                 ),
               ),
             ),

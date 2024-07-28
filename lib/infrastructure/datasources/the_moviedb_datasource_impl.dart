@@ -87,7 +87,7 @@ class TheMoviedbDatasourceImpl extends MoviesDataSource {
   Future<List<Movie>> getMovieByGenre(
       {required String genreId, int page = 1}) async {
     final responseMovieByGenre = await dio.get(
-      '/discover/movie/',
+      '/discover/movie',
       queryParameters: {
         'with_genres': genreId,
         'page': page,

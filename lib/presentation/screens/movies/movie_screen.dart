@@ -36,7 +36,7 @@ class MovieScreenState extends ConsumerState<MovieScreen> {
     final Movie? movie = ref.watch(movieInfoProvider)[widget.movieId];
     if (movie == null) {
       return Scaffold(
-        backgroundColor: colors.onBackground,
+        backgroundColor: colors.onSurface,
         body: const Center(
           child: CircularProgressIndicator(
             strokeWidth: 2,
@@ -138,25 +138,23 @@ class _MovieGenres extends StatelessWidget {
     return Wrap(
       spacing: 20,
       children: [
-        ...movie.genreIds
-            .map(
-              (genero) => GestureDetector(
-                onTap: () {
-                  final String genreId =
-                      genres.firstWhere((genre) => genre.name == genero).id;
+        ...movie.genreIds.map(
+          (genero) => GestureDetector(
+            onTap: () {
+              final String genreId =
+                  genres.firstWhere((genre) => genre.name == genero).id;
 
-                  context.push('/home/1/categories/$genreId');
-                },
-                child: Chip(
-                  label: Text(
-                    genero,
-                    style: TextStyle(color: colors.onBackground),
-                  ),
-                  shape: const StadiumBorder(),
-                ),
+              context.push('/home/1/categories/$genreId');
+            },
+            child: Chip(
+              label: Text(
+                genero,
+                style: TextStyle(color: colors.onSurface),
               ),
-            )
-            .toList(),
+              shape: const StadiumBorder(),
+            ),
+          ),
+        ),
       ],
     );
   }
@@ -184,7 +182,7 @@ class _MovieInfo extends StatelessWidget {
             child: Text(
               movie.title,
               style: textStyle.titleLarge!.copyWith(
-                color: colors.onBackground,
+                color: colors.onSurface,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -192,7 +190,7 @@ class _MovieInfo extends StatelessWidget {
           Text(
             movie.overview,
             textAlign: TextAlign.justify,
-            style: textStyle.bodyMedium!.copyWith(color: colors.onBackground),
+            style: textStyle.bodyMedium!.copyWith(color: colors.onSurface),
           ),
           const SizedBox(
             height: 5,
@@ -203,7 +201,7 @@ class _MovieInfo extends StatelessWidget {
                   movie.releaseDate,
                 ),
             style: textStyle.bodyMedium!.copyWith(
-              color: colors.onBackground,
+              color: colors.onSurface,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -296,13 +294,13 @@ class _ActorsByMovie extends ConsumerWidget {
                     actor.name,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(color: colors.onBackground),
+                    style: TextStyle(color: colors.onSurface),
                   ),
                   Text(
                     actor.character ?? '',
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                      color: colors.onBackground,
+                      color: colors.onSurface,
                       fontWeight: FontWeight.bold,
                     ),
                   )
@@ -354,7 +352,7 @@ class _CustomSliverAppBar extends ConsumerWidget {
           ),
         )
       ],
-      backgroundColor: colors.onBackground,
+      backgroundColor: colors.onSurface,
       expandedHeight: size.height * 0.65,
       foregroundColor: colors.onSecondary,
       flexibleSpace: FlexibleSpaceBar(

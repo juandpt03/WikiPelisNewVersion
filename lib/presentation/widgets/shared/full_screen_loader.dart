@@ -30,7 +30,7 @@ class FullScreenLoader extends StatelessWidget {
         children: [
           Text(
             S.of(context).esperePorFavor,
-            style: TextStyle(color: colors.onBackground),
+            style: TextStyle(color: colors.onSurface),
           ),
           const SizedBox(
             height: 10,
@@ -47,11 +47,11 @@ class FullScreenLoader extends StatelessWidget {
               if (!snapshot.hasData) {
                 return Text(
                   S.of(context).cargando,
-                  style: TextStyle(color: colors.onBackground),
+                  style: TextStyle(color: colors.onSurface),
                 );
               }
               return Text(snapshot.data!,
-                  style: TextStyle(color: colors.onBackground));
+                  style: TextStyle(color: colors.onSurface));
             },
           )
         ],

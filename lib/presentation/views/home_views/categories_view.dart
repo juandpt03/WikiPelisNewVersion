@@ -19,11 +19,13 @@ class _CategoriesViewState extends ConsumerState<CategoriesView> {
   void initState() {
     super.initState();
 
-    ref.read(moviesGenresProvider.notifier).loadGenres().whenComplete(() {
-      final genres = ref.read(moviesGenresProvider);
-      for (final genre in genres) {
-        ref.read(moviesByGenreProvider(genre.id).notifier).loadNextPage();
-      }
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ref.read(moviesGenresProvider.notifier).loadGenres().whenComplete(() {
+        final genres = ref.read(moviesGenresProvider);
+        for (final genre in genres) {
+          ref.read(moviesByGenreProvider(genre.id).notifier).loadNextPage();
+        }
+      });
     });
   }
 

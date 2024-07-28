@@ -93,7 +93,7 @@ class FavoritesViewState extends ConsumerState<FavoritesView> {
         .bodyLarge
         ?.copyWith(color: colors.secondary, fontWeight: FontWeight.bold);
     final textStyleTitle = Theme.of(context).textTheme.titleLarge?.copyWith(
-        fontWeight: FontWeight.bold, color: colors.onBackground, fontSize: 21);
+        fontWeight: FontWeight.bold, color: colors.onSurface, fontSize: 21);
     final Size size = MediaQuery.of(context).size;
 
     showDialog(

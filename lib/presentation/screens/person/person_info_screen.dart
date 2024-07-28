@@ -112,7 +112,7 @@ class _BodyinfoPerson extends StatelessWidget {
     final colors = Theme.of(context).colorScheme;
     final textStyleTitle = Theme.of(context).textTheme.titleLarge?.copyWith(
           fontWeight: FontWeight.bold,
-          color: colors.onBackground,
+          color: colors.onSurface,
         );
     final textStyleInformation =
         Theme.of(context).textTheme.bodyLarge?.copyWith(

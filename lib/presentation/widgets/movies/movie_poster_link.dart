@@ -61,7 +61,7 @@ class MoviePosterLink extends ConsumerWidget {
               movie.title,
               maxLines: 1,
               style: textStyle.titleSmall!.copyWith(
-                  color: colors.onBackground, overflow: TextOverflow.ellipsis),
+                  color: colors.onSurface, overflow: TextOverflow.ellipsis),
             ),
 
             Row(
@@ -81,8 +81,7 @@ class MoviePosterLink extends ConsumerWidget {
                 const Spacer(),
                 Text(
                   HumanFormats.number(movie.popularity),
-                  style:
-                      textStyle.bodySmall!.copyWith(color: colors.onBackground),
+                  style: textStyle.bodySmall!.copyWith(color: colors.onSurface),
                 )
               ],
             ),

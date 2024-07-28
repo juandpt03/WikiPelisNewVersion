@@ -60,7 +60,7 @@ class SearchMovieDelegate extends SearchDelegate<Movie?> {
       required this.context})
       : super(
           searchFieldStyle:
-              TextStyle(color: Theme.of(context).colorScheme.onBackground),
+              TextStyle(color: Theme.of(context).colorScheme.onSurface),
         );
 
   @override
@@ -170,18 +170,18 @@ class _MovieItem extends StatelessWidget {
                   Text(
                     movie.title,
                     style: textStyle.titleMedium!
-                        .copyWith(color: colors.onBackground),
+                        .copyWith(color: colors.onSurface),
                   ),
                   (movie.overview.length > 100)
                       ? Text(
                           '${movie.overview.substring(0, 100)}...',
                           style: textStyle.bodyMedium!
-                              .copyWith(color: colors.onBackground),
+                              .copyWith(color: colors.onSurface),
                         )
                       : Text(
                           movie.overview,
                           style: textStyle.bodyMedium!
-                              .copyWith(color: colors.onBackground),
+                              .copyWith(color: colors.onSurface),
                         ),
                   Row(
                     children: [

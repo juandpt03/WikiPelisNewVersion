@@ -34,7 +34,7 @@ class _WatchProvidersView extends StatelessWidget {
     final colors = Theme.of(context).colorScheme;
     final textStyleTitle = Theme.of(context).textTheme.titleLarge?.copyWith(
           fontWeight: FontWeight.bold,
-          color: colors.onBackground,
+          color: colors.onSurface,
         );
 
     return Column(
@@ -65,7 +65,7 @@ class _NoWatchProvidersWarning extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: size.height * 0.12,
-      color: colors.background,
+      color: colors.surface,
       child: Center(
         child: Text(
           S.of(context).muyPronto,
