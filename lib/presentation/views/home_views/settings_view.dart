@@ -67,7 +67,7 @@ class _CardThemeSettings extends ConsumerWidget {
       currentColor = color;
       ref
           .watch(themeNotifierProvider.notifier)
-          .toggleTheme(color.value.toRadixString(16));
+          .toggleTheme(color.toARGB32().toRadixString(16));
     }
 
     void colorPicker(BuildContext context) {

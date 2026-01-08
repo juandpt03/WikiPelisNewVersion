@@ -20,7 +20,7 @@ class MovieSlidesShow extends StatelessWidget {
           margin: const EdgeInsets.only(top: 0),
           builder: DotSwiperPaginationBuilder(
             activeColor: colors.primary,
-            color: colors.secondary.withOpacity(0.6),
+            color: colors.secondary.withValues(alpha: 0.6),
           ),
         ),
         viewportFraction: 0.85,
@@ -68,7 +68,7 @@ class _Slide extends StatelessWidget {
         decoration: const BoxDecoration(color: Colors.black12),
         child: Center(
           child: CircularProgressIndicator(
-            color: colors.primary.withOpacity(0.5),
+            color: colors.primary.withValues(alpha: 0.5),
           ),
         ),
       );
